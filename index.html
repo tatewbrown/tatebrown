@@ -6,18 +6,21 @@
   <title>Tate Brown</title>
   <style>
     :root {
-      --ink: #dff7ff;
-      --muted: rgba(223, 247, 255, .72);
-      --blue: #0b6fd8;
-      --deep: #031131;
-      --glass: rgba(170, 230, 255, .13);
-      --glass-strong: rgba(220, 250, 255, .22);
-      --line: rgba(230, 255, 255, .38);
+      --ink: #e9fbff;
+      --ice: rgba(232, 252, 255, .92);
+      --soft: rgba(232, 252, 255, .68);
+      --blue: #1a74ff;
+      --blue2: #02d4ff;
+      --deep: #06102a;
+      --black: #05070d;
+      --glass: rgba(255, 255, 255, .16);
+      --edge: rgba(255, 255, 255, .48);
+      --lime: #b7ff33;
     }
 
     * { box-sizing: border-box; }
 
-    html { min-height: 100%; background: #030816; }
+    html { min-height: 100%; background: #05070d; }
 
     body {
       margin: 0;
@@ -26,10 +29,10 @@
       color: var(--ink);
       overflow-x: hidden;
       background:
-        radial-gradient(circle at 72% 10%, rgba(120,230,255,.55) 0 2%, transparent 13%),
-        radial-gradient(circle at 20% 18%, rgba(64,140,255,.5), transparent 28%),
-        radial-gradient(circle at 84% 76%, rgba(0,255,220,.22), transparent 24%),
-        linear-gradient(145deg, #020618 0%, #072462 36%, #078bd8 68%, #02113a 100%);
+        radial-gradient(circle at 18% 18%, rgba(0, 201, 255, .42), transparent 21%),
+        radial-gradient(circle at 80% 24%, rgba(14, 96, 255, .5), transparent 28%),
+        radial-gradient(circle at 50% 110%, rgba(0, 224, 255, .22), transparent 34%),
+        linear-gradient(135deg, #02040a 0%, #061432 28%, #0a3e87 52%, #08235a 72%, #02040a 100%);
     }
 
     body::before {
@@ -37,339 +40,550 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background:
-        repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 4px),
-        radial-gradient(circle at 18% 76%, transparent 0 44px, rgba(255,255,255,.24) 45px 47px, transparent 48px),
-        radial-gradient(circle at 78% 62%, transparent 0 86px, rgba(180,245,255,.18) 87px 92px, transparent 93px),
-        radial-gradient(circle at 40% 24%, transparent 0 155px, rgba(255,255,255,.09) 156px 162px, transparent 163px);
-      mix-blend-mode: screen;
-      opacity: .9;
       z-index: 0;
+      background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px),
+        radial-gradient(circle at 16% 88%, transparent 0 70px, rgba(178,242,255,.20) 71px 74px, transparent 75px),
+        radial-gradient(circle at 82% 60%, transparent 0 112px, rgba(255,255,255,.16) 113px 118px, transparent 119px),
+        radial-gradient(circle at 44% 26%, transparent 0 170px, rgba(255,255,255,.09) 171px 177px, transparent 178px);
+      mix-blend-mode: screen;
+      opacity: .92;
     }
 
     body::after {
       content: "";
       position: fixed;
-      inset: -20%;
-      pointer-events: none;
+      inset: -12%;
       z-index: 0;
+      pointer-events: none;
       background:
-        linear-gradient(100deg, transparent 15%, rgba(255,255,255,.12) 28%, transparent 42%),
-        linear-gradient(24deg, transparent 28%, rgba(87,220,255,.14) 32%, transparent 38%),
-        linear-gradient(153deg, transparent 34%, rgba(255,255,255,.08) 39%, transparent 44%);
-      filter: blur(2px);
-      animation: wave 15s ease-in-out infinite alternate;
+        linear-gradient(102deg, transparent 10%, rgba(255,255,255,.12) 22%, transparent 38%),
+        linear-gradient(28deg, transparent 29%, rgba(0,231,255,.14) 34%, transparent 41%),
+        linear-gradient(151deg, transparent 34%, rgba(255,255,255,.08) 40%, transparent 47%),
+        conic-gradient(from 90deg at 18% 72%, transparent 0deg, rgba(0, 132, 255, .3) 28deg, transparent 68deg);
+      filter: blur(1.4px);
+      animation: liquidShift 14s ease-in-out infinite alternate;
+      opacity: .85;
     }
 
-    @keyframes wave {
-      from { transform: translate3d(-2%, -1%, 0) rotate(-1deg); }
-      to { transform: translate3d(2%, 1%, 0) rotate(1deg); }
+    @keyframes liquidShift {
+      from { transform: translate3d(-18px, -8px, 0) skewX(-2deg); }
+      to { transform: translate3d(18px, 10px, 0) skewX(2deg); }
     }
 
-    .grain {
+    .noise {
       position: fixed;
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      opacity: .14;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E");
+      opacity: .13;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.78'/%3E%3C/svg%3E");
     }
 
-    .stars {
+    .sparkles {
       position: fixed;
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      background:
-        radial-gradient(circle at 12% 20%, #fff 0 1px, transparent 2px),
-        radial-gradient(circle at 19% 58%, #fff 0 1px, transparent 2px),
-        radial-gradient(circle at 30% 42%, #fff 0 1px, transparent 2px),
-        radial-gradient(circle at 46% 15%, #fff 0 1px, transparent 2px),
-        radial-gradient(circle at 62% 36%, #fff 0 1px, transparent 2px),
-        radial-gradient(circle at 75% 22%, #fff 0 1px, transparent 2px),
-        radial-gradient(circle at 86% 52%, #fff 0 1px, transparent 2px),
-        radial-gradient(circle at 67% 80%, #fff 0 1px, transparent 2px);
-      filter: drop-shadow(0 0 5px #c9fbff);
       opacity: .8;
+      background:
+        radial-gradient(circle at 10% 21%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 20% 48%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 29% 72%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 44% 18%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 58% 40%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 69% 14%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 78% 76%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 91% 54%, #fff 0 1px, transparent 2px);
+      filter: drop-shadow(0 0 6px #b9fbff);
     }
 
     .page {
       position: relative;
       z-index: 2;
-      width: min(860px, 92vw);
+      width: min(980px, 94vw);
+      min-height: 100vh;
       margin: 0 auto;
-      padding: 54px 0 58px;
+      padding: 34px 0;
+      display: grid;
+      place-items: center;
     }
 
     .bubble {
       position: absolute;
       border-radius: 50%;
-      border: 1px solid rgba(230,255,255,.45);
-      background: radial-gradient(circle at 35% 24%, rgba(255,255,255,.72), rgba(120,225,255,.18) 28%, rgba(0,70,180,.08) 64%, transparent 72%);
-      box-shadow: inset -18px -24px 40px rgba(2,20,80,.18), 0 0 42px rgba(130,235,255,.18);
+      border: 1px solid rgba(255,255,255,.42);
+      background: radial-gradient(circle at 32% 24%, rgba(255,255,255,.85), rgba(160,236,255,.18) 31%, rgba(0,60,170,.08) 65%, transparent 74%);
+      box-shadow: inset -18px -22px 34px rgba(0, 15, 65, .25), 0 0 32px rgba(148, 239, 255, .18);
       pointer-events: none;
-      animation: float 5s ease-in-out infinite alternate;
+      animation: floaty 5s ease-in-out infinite alternate;
     }
 
-    .bubble.one { width: 175px; height: 175px; left: -86px; top: 190px; }
-    .bubble.two { width: 92px; height: 92px; right: -30px; top: 360px; animation-delay: .8s; }
-    .bubble.three { width: 42px; height: 42px; left: 88px; top: 78px; animation-delay: 1.5s; }
+    .bubble.a { width: 210px; height: 210px; left: -92px; bottom: 58px; }
+    .bubble.b { width: 86px; height: 86px; right: -18px; top: 96px; animation-delay: .8s; }
+    .bubble.c { width: 42px; height: 42px; left: 56px; top: 74px; animation-delay: 1.5s; }
+    .bubble.d { width: 124px; height: 124px; right: 88px; bottom: 78px; animation-delay: .2s; }
 
-    @keyframes float {
-      from { transform: translateY(0); }
-      to { transform: translateY(-16px); }
+    @keyframes floaty {
+      from { transform: translateY(0) translateX(0); }
+      to { transform: translateY(-17px) translateX(5px); }
     }
 
-    .wrap {
+    .site {
+      width: 100%;
       position: relative;
-      border: 1px solid var(--line);
-      border-radius: 34px;
+      border-radius: 18px;
       padding: 1px;
-      background: linear-gradient(135deg, rgba(255,255,255,.62), rgba(255,255,255,.08) 42%, rgba(0,200,255,.3));
-      box-shadow: 0 30px 90px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.45);
+      background: linear-gradient(135deg, rgba(255,255,255,.64), rgba(255,255,255,.08) 30%, rgba(0,206,255,.42) 62%, rgba(255,255,255,.18));
+      box-shadow: 0 36px 110px rgba(0,0,0,.62), inset 0 1px 0 rgba(255,255,255,.5);
       overflow: hidden;
     }
 
-    .wrap::before {
+    .site::before {
       content: "";
       position: absolute;
-      inset: -50%;
-      background: conic-gradient(from 80deg, transparent, rgba(255,255,255,.16), transparent, rgba(70,230,255,.2), transparent);
-      animation: shimmer 11s linear infinite;
+      inset: -60%;
+      background: conic-gradient(from 90deg, transparent, rgba(255,255,255,.22), transparent, rgba(0,226,255,.24), transparent);
+      animation: chrome 13s linear infinite;
     }
 
-    @keyframes shimmer { to { transform: rotate(360deg); } }
+    @keyframes chrome { to { transform: rotate(360deg); } }
 
-    .panel {
+    .window {
       position: relative;
       z-index: 1;
-      border-radius: 33px;
-      padding: 30px;
-      background:
-        linear-gradient(180deg, rgba(0,29,86,.64), rgba(2,11,35,.72)),
-        radial-gradient(circle at 50% 0%, rgba(120,235,255,.28), transparent 46%);
-      backdrop-filter: blur(18px);
+      border-radius: 17px;
       overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(0, 17, 58, .72), rgba(0, 4, 18, .88)),
+        radial-gradient(circle at 20% 18%, rgba(59, 187, 255, .28), transparent 31%);
+      backdrop-filter: blur(18px);
+      min-height: 650px;
     }
 
-    .panel::before {
+    .topbar {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,.06)),
+        linear-gradient(90deg, rgba(0, 163, 255, .22), rgba(255,255,255,.04));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.42);
+    }
+
+    .brand-small {
+      font-size: 11px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: rgba(234,252,255,.7);
+    }
+
+    .controls {
+      display: flex;
+      gap: 7px;
+    }
+
+    .controls span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: block;
+      border: 1px solid rgba(255,255,255,.5);
+      background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(0,170,255,.4));
+      box-shadow: 0 0 8px rgba(132,237,255,.25);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 24px;
+      padding: 36px;
+      min-height: 612px;
+    }
+
+    .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(115deg, transparent 0 28%, rgba(255,255,255,.16) 32%, transparent 39%),
-        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.24), transparent 34%);
       pointer-events: none;
+      background:
+        radial-gradient(ellipse at 20% 100%, rgba(0,184,255,.35), transparent 40%),
+        linear-gradient(110deg, transparent 0 18%, rgba(255,255,255,.08) 25%, transparent 34%),
+        linear-gradient(180deg, transparent 0 74%, rgba(0,0,0,.24));
     }
 
-    header {
+    .left, .right {
       position: relative;
       z-index: 1;
-      text-align: left;
-      padding: 16px 6px 24px;
     }
 
-    .kicker {
-      margin: 0 0 13px;
-      font-size: 12px;
-      letter-spacing: .28em;
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 540px;
+    }
+
+    .title-block {
+      padding-top: 8px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: rgba(233,251,255,.62);
+      font-size: 11px;
+      letter-spacing: .33em;
       text-transform: uppercase;
-      color: rgba(224,252,255,.66);
     }
 
     h1 {
       margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(54px, 11vw, 112px);
-      line-height: .82;
+      color: #f8feff;
+      font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
       font-weight: 400;
-      letter-spacing: -6px;
-      color: #f7fdff;
+      font-style: italic;
+      font-size: clamp(60px, 10vw, 120px);
+      line-height: .78;
+      letter-spacing: -7px;
+      text-transform: lowercase;
       text-shadow:
-        0 0 11px rgba(160,244,255,.82),
-        0 8px 0 rgba(0,84,165,.55),
-        0 22px 40px rgba(0,0,0,.55);
+        0 0 10px rgba(180,247,255,.82),
+        0 4px 0 rgba(0,94,210,.55),
+        0 18px 38px rgba(0,0,0,.75);
     }
 
-    .tagline {
-      margin: 18px 0 0;
-      max-width: 620px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    .quick {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 6px 0 24px;
-    }
-
-    .quick a {
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 10px 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(235,255,255,.42);
-      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.34), 0 10px 25px rgba(0,0,0,.18);
-    }
-
-    .links {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 13px;
-    }
-
-    .link-card {
-      position: relative;
+    h1 span {
       display: block;
-      min-height: 78px;
-      padding: 18px 20px 18px 72px;
-      text-decoration: none;
-      color: var(--ink);
-      border: 1px solid rgba(235,255,255,.38);
-      border-radius: 22px;
+      color: #2c7dff;
+      text-shadow:
+        0 0 12px rgba(68,149,255,.7),
+        0 4px 0 rgba(0,24,85,.8),
+        0 18px 38px rgba(0,0,0,.75);
+    }
+
+    .sub {
+      margin: 24px 0 0;
+      color: rgba(234,252,255,.72);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 360px;
+      text-shadow: 0 1px 0 rgba(0,0,0,.45);
+    }
+
+    .phone-card {
+      position: relative;
+      width: min(320px, 100%);
+      min-height: 170px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.36);
       background:
-        linear-gradient(100deg, rgba(255,255,255,.22), rgba(255,255,255,.06) 44%, rgba(0,180,255,.1)),
-        radial-gradient(circle at 0% 50%, rgba(115,235,255,.18), transparent 28%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 16px 38px rgba(0,0,0,.25);
+        radial-gradient(circle at 30% 12%, rgba(255,255,255,.34), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.42), 0 18px 42px rgba(0,0,0,.32);
+      padding: 20px;
       overflow: hidden;
-      transition: transform .16s ease, border-color .16s ease, background .16s ease;
     }
 
-    .link-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,.72);
-      background:
-        linear-gradient(100deg, rgba(255,255,255,.3), rgba(255,255,255,.08) 44%, rgba(0,180,255,.16)),
-        radial-gradient(circle at 0% 50%, rgba(115,235,255,.26), transparent 28%);
-    }
-
-    .link-card::before {
+    .phone-card::before {
       content: "";
       position: absolute;
-      left: 20px;
-      top: 50%;
-      width: 31px;
-      height: 31px;
-      transform: translateY(-50%) rotate(45deg);
-      border-radius: 9px;
-      border: 1px solid rgba(255,255,255,.56);
+      width: 150px;
+      height: 260px;
+      left: 68px;
+      top: -36px;
+      border-radius: 34px;
+      transform: rotate(-10deg);
+      border: 1px solid rgba(255,255,255,.44);
       background:
-        radial-gradient(circle at 28% 24%, rgba(255,255,255,.85), rgba(255,255,255,.08) 32%),
-        linear-gradient(135deg, rgba(118,242,255,.75), rgba(22,95,222,.3));
-      box-shadow: 0 0 18px rgba(130,240,255,.34), inset 0 1px 0 rgba(255,255,255,.55);
+        linear-gradient(180deg, rgba(255,255,255,.4), rgba(0,162,255,.1)),
+        radial-gradient(circle at 50% 72%, rgba(255,255,255,.35), transparent 38%);
+      box-shadow: inset 0 0 30px rgba(255,255,255,.22), 0 0 28px rgba(0,179,255,.18);
     }
 
-    .link-card::after {
+    .phone-card::after {
+      content: "CONNECTING PEOPLE";
+      position: absolute;
+      left: 20px;
+      bottom: 17px;
+      font-size: 10px;
+      letter-spacing: .24em;
+      color: rgba(233,251,255,.52);
+    }
+
+    .screen {
+      position: absolute;
+      left: 111px;
+      top: 42px;
+      width: 72px;
+      height: 56px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.42);
+      background: linear-gradient(180deg, rgba(221,250,255,.78), rgba(74,163,255,.36));
+      box-shadow: inset 0 0 14px rgba(255,255,255,.4);
+    }
+
+    .screen::after {
+      content: "tate";
+      position: absolute;
+      left: 11px;
+      top: 17px;
+      color: rgba(0,40,110,.65);
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: .06em;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link-stack {
+      width: min(470px, 100%);
+      display: grid;
+      gap: 12px;
+    }
+
+    .link {
+      position: relative;
+      display: grid;
+      grid-template-columns: 44px 1fr 20px;
+      align-items: center;
+      gap: 13px;
+      min-height: 61px;
+      padding: 9px 16px 9px 10px;
+      text-decoration: none;
+      color: var(--ink);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.38);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.07) 47%, rgba(0,0,0,.14)),
+        radial-gradient(circle at 0% 50%, rgba(42,178,255,.22), transparent 36%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.42),
+        inset 0 -12px 30px rgba(0,0,0,.14),
+        0 13px 32px rgba(0,0,0,.26);
+      overflow: hidden;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .link:hover {
+      transform: translateX(4px);
+      border-color: rgba(255,255,255,.72);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.55),
+        inset 0 -12px 30px rgba(0,0,0,.12),
+        0 18px 40px rgba(0,0,0,.32),
+        0 0 24px rgba(20,200,255,.16);
+    }
+
+    .link::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.24) 34%, transparent 52%);
-      transform: translateX(-115%);
-      transition: transform .5s ease;
+      background: linear-gradient(105deg, transparent 0 18%, rgba(255,255,255,.26) 34%, transparent 48%);
+      transform: translateX(-112%);
+      transition: transform .44s ease;
     }
 
-    .link-card:hover::after { transform: translateX(120%); }
+    .link:hover::before { transform: translateX(112%); }
 
-    .label, .desc { position: relative; z-index: 1; }
+    .icon {
+      position: relative;
+      z-index: 1;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: #06102a;
+      font-weight: bold;
+      font-size: 18px;
+      background:
+        radial-gradient(circle at 30% 16%, rgba(255,255,255,.98), rgba(255,255,255,.46) 36%, rgba(91,213,255,.58) 62%, rgba(0,83,219,.45));
+      border: 1px solid rgba(255,255,255,.62);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 7px 18px rgba(0,0,0,.18);
+    }
+
+    .copy {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+    }
 
     .label {
       display: block;
-      font-size: 16px;
-      line-height: 1.25;
+      font-size: 15px;
       font-weight: 700;
-      text-shadow: 0 0 11px rgba(135,240,255,.32);
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-shadow: 0 1px 0 rgba(0,0,0,.55);
     }
 
     .desc {
       display: block;
-      margin-top: 6px;
-      color: rgba(223,247,255,.61);
-      font-size: 12px;
-      line-height: 1.45;
+      margin-top: 4px;
+      font-size: 11px;
+      line-height: 1.3;
+      color: rgba(232,252,255,.58);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    footer {
+    .arrow {
       position: relative;
       z-index: 1;
-      margin-top: 22px;
-      color: rgba(223,247,255,.45);
+      width: 18px;
+      height: 18px;
+      border-top: 2px solid rgba(232,252,255,.8);
+      border-right: 2px solid rgba(232,252,255,.8);
+      transform: rotate(45deg);
+      filter: drop-shadow(0 0 6px rgba(0,213,255,.6));
+    }
+
+    .ticker {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      border-top: 1px solid rgba(255,255,255,.18);
+      background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.34));
+      overflow: hidden;
+      height: 32px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker span {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      color: rgba(232,252,255,.54);
       font-size: 11px;
       letter-spacing: .18em;
       text-transform: uppercase;
-      text-align: center;
+      animation: crawl 22s linear infinite;
     }
 
-    @media (max-width: 680px) {
-      .page { padding: 24px 0 34px; }
-      .panel { padding: 20px; }
+    @keyframes crawl {
+      to { transform: translateX(-100%); }
+    }
+
+    @media (max-width: 820px) {
+      .page { padding: 18px 0; align-items: start; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 22px;
+      }
+      .left { min-height: auto; gap: 24px; }
+      .phone-card { min-height: 128px; }
+      .right { justify-content: stretch; }
+      .window { min-height: auto; }
+      .label { white-space: normal; }
+      .desc { white-space: normal; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 18px; }
+      .topbar { height: 34px; }
+      .brand-small { letter-spacing: .16em; }
       h1 { letter-spacing: -4px; }
-      .link-card { padding-left: 62px; }
-      .bubble.one { left: -118px; }
+      .link { grid-template-columns: 38px 1fr 16px; border-radius: 14px; }
+      .icon { height: 38px; border-radius: 11px; }
     }
   </style>
 </head>
 <body>
-  <div class="grain"></div>
-  <div class="stars"></div>
+  <div class="noise"></div>
+  <div class="sparkles"></div>
 
   <main class="page">
-    <div class="bubble one"></div>
-    <div class="bubble two"></div>
-    <div class="bubble three"></div>
+    <div class="bubble a"></div>
+    <div class="bubble b"></div>
+    <div class="bubble c"></div>
+    <div class="bubble d"></div>
 
-    <section class="wrap">
-      <div class="panel">
-        <header>
-          <p class="kicker">@realTateBrown</p>
-          <h1>Tate Brown</h1>
-          <p class="tagline">Resident Zoomer apologist at Timcast.</p>
-        </header>
-
-        <nav class="quick" aria-label="Social links">
-          <a href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">X</a>
-          <a href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">Substack</a>
-          <a href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">TikTok</a>
-        </nav>
-
-        <div class="links">
-          <a class="link-card" href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">
-            <span class="label">My latest on Substack: An analysis of Trump's turtleneck</span>
-            <span class="desc">To the masses, it was simply another quirky Trump moment. To patriots, the message was received clear and concise.</span>
-          </a>
-
-          <a class="link-card" href="https://rumble.com/c/Timcast" target="_blank" rel="noopener noreferrer">
-            <span class="label">rumble.com</span>
-            <span class="desc">Browse the most recent videos from channel "Timcast" uploaded to Rumble.com</span>
-          </a>
-
-          <a class="link-card" href="https://www.youtube.com/playlist?list=PLxQaod7tWvYLXcjgoF4O_vX2geOzzVmJr" target="_blank" rel="noopener noreferrer">
-            <span class="label">Watch Across the Pond with Connor Tomlinson on YouTube</span>
-            <span class="desc">Across the Pond is a weekly news, politics, and culture series presented by Timcast’s Tate Brown and English political commentator Connor Tomlinson.</span>
-          </a>
-
-          <a class="link-card" href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">
-            <span class="label">Instagram</span>
-          </a>
-
-          <a class="link-card" href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">
-            <span class="label">X</span>
-          </a>
-
-          <a class="link-card" href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">
-            <span class="label">TikTok</span>
-          </a>
+    <section class="site">
+      <div class="window">
+        <div class="topbar">
+          <div class="brand-small">tatebrown.net</div>
+          <div class="controls" aria-hidden="true"><span></span><span></span><span></span></div>
         </div>
+
+        <div class="hero">
+          <div class="left">
+            <div class="title-block">
+              <span class="eyebrow">@realTateBrown</span>
+              <h1>tate <span>brown</span></h1>
+              <p class="sub">Resident Zoomer apologist at Timcast.</p>
+            </div>
+
+            <div class="phone-card" aria-hidden="true">
+              <div class="screen"></div>
+            </div>
+          </div>
+
+          <div class="right">
+            <nav class="link-stack" aria-label="Links">
+              <a class="link" href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">
+                <span class="icon">S</span>
+                <span class="copy">
+                  <span class="label">My latest on Substack: An analysis of Trump's turtleneck</span>
+                  <span class="desc">To the masses, it was simply another quirky Trump moment. To patriots, the message was received clear and concise.</span>
+                </span>
+                <span class="arrow"></span>
+              </a>
+
+              <a class="link" href="https://rumble.com/c/Timcast" target="_blank" rel="noopener noreferrer">
+                <span class="icon">▶</span>
+                <span class="copy">
+                  <span class="label">rumble.com</span>
+                  <span class="desc">Browse the most recent videos from channel "Timcast" uploaded to Rumble.com</span>
+                </span>
+                <span class="arrow"></span>
+              </a>
+
+              <a class="link" href="https://www.youtube.com/playlist?list=PLxQaod7tWvYLXcjgoF4O_vX2geOzzVmJr" target="_blank" rel="noopener noreferrer">
+                <span class="icon">Y</span>
+                <span class="copy">
+                  <span class="label">Watch Across the Pond with Connor Tomlinson on YouTube</span>
+                  <span class="desc">Across the Pond is a weekly news, politics, and culture series presented by Timcast’s Tate Brown and English political commentator Connor Tomlinson.</span>
+                </span>
+                <span class="arrow"></span>
+              </a>
+
+              <a class="link" href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">
+                <span class="icon">◎</span>
+                <span class="copy"><span class="label">Instagram</span></span>
+                <span class="arrow"></span>
+              </a>
+
+              <a class="link" href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">
+                <span class="icon">X</span>
+                <span class="copy"><span class="label">X</span></span>
+                <span class="arrow"></span>
+              </a>
+
+              <a class="link" href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">
+                <span class="icon">♪</span>
+                <span class="copy"><span class="label">TikTok</span></span>
+                <span class="arrow"></span>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="ticker"><span>loading profile // match day signal // dc to london // timcast // across the pond //</span></div>
       </div>
     </section>
   </main>
