@@ -1,134 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TATE BROWN</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        
-        :root {
-            --orange: #ff7a00;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: linear-gradient(135deg, #001a33 0%, #002b4d 100%);
-            color: #ffffff;
-            font-family: 'Inter', system-ui, sans-serif;
-            min-height: 100vh;
-            background-attachment: fixed;
-        }
-        
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        header {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            margin-bottom: 80px;
-            flex-wrap: wrap;
-        }
-        
-        .avatar {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: url('https://pbs.twimg.com/profile_images/2021988620333404160/ZizmGr0N.jpg') center/cover;
-            border: 10px solid rgba(255, 122, 0, 0.8);
-            box-shadow: 0 0 0 18px rgba(255, 122, 0, 0.25), 0 30px 60px -15px rgba(0,0,0,0.5);
-        }
-        
-        .header-text h1 {
-            font-size: 4.2rem;
-            font-weight: 700;
-            letter-spacing: -3px;
-        }
-        
-        .header-text p {
-            font-size: 1.45rem;
-            opacity: 0.9;
-            margin-top: 8px;
-        }
-        
-        .section {
-            background: rgba(255,255,255,0.085);
-            border: 1px solid rgba(255,255,255,0.22);
-            border-radius: 28px;
-            padding: 52px 48px;
-            backdrop-filter: blur(24px);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
-        }
-        
-        h2 { text-align: center; font-size: 2.1rem; margin-bottom: 40px; font-weight: 600; }
-        
-        .links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 18px;
-        }
-        
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 26px 32px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,122,0,0.4);
-            border-radius: 18px;
-            color: white;
-            text-decoration: none;
-            font-size: 1.35rem;
-            font-weight: 500;
-            transition: all 0.35s ease;
-        }
-        
-        .link-btn:hover {
-            background: rgba(255,122,0,0.22);
-            border-color: #ff7a00;
-            transform: translateY(-6px);
-        }
-        
-        .arrow { font-size: 2rem; }
-        .link-btn:hover .arrow { transform: translateX(10px); }
-        
-        footer {
-            text-align: center;
-            margin-top: 100px;
-            opacity: 0.7;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tate Brown | Links</title>
+  <style>
+    :root {
+      --sky: #66d9ff;
+      --deep-sky: #008ee6;
+      --water: #00b4d8;
+      --lime: #8df542;
+      --grass: #4ecb35;
+      --orange: #ff9b22;
+      --white-glass: rgba(255, 255, 255, 0.58);
+      --white-glass-strong: rgba(255, 255, 255, 0.78);
+      --ink: #063b5c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: #7ee7ff;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Tahoma, Verdana, Arial, sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 84% 10%, rgba(255,255,255,.95) 0 3%, rgba(255,255,255,.45) 4%, transparent 12%),
+        radial-gradient(circle at 24% 24%, rgba(255,255,255,.48), transparent 14%),
+        linear-gradient(to bottom, #1199ff 0%, #7ae8ff 41%, #9bf546 42%, #24b33d 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 14%, transparent 0 5px, rgba(255,255,255,.85) 6px 7px, transparent 8px),
+        radial-gradient(circle at 65% 22%, transparent 0 9px, rgba(255,255,255,.75) 10px 12px, transparent 13px),
+        radial-gradient(circle at 78% 63%, transparent 0 34px, rgba(255,255,255,.45) 35px 39px, transparent 40px),
+        radial-gradient(circle at 14% 72%, transparent 0 54px, rgba(255,255,255,.34) 55px 62px, transparent 63px);
+      opacity: .85;
+      z-index: 0;
+    }
+
+    .clouds {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 20% 18%, rgba(255,255,255,.95) 0 5%, transparent 5.5%),
+        radial-gradient(ellipse at 26% 17%, rgba(255,255,255,.92) 0 4%, transparent 4.5%),
+        radial-gradient(ellipse at 31% 19%, rgba(255,255,255,.9) 0 4%, transparent 4.5%),
+        radial-gradient(ellipse at 72% 31%, rgba(255,255,255,.88) 0 3.5%, transparent 4%),
+        radial-gradient(ellipse at 78% 30%, rgba(255,255,255,.84) 0 4.5%, transparent 5%);
+      filter: blur(.2px);
+      animation: drift 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      from { transform: translateX(-18px); }
+      to { transform: translateX(18px); }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(920px, 94vw);
+      margin: 0 auto;
+      padding: 36px 0 50px;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.65);
+      background: radial-gradient(circle at 35% 25%, rgba(255,255,255,.85), rgba(255,255,255,.22) 28%, rgba(71,210,255,.12) 55%, rgba(255,255,255,.05));
+      box-shadow: inset -12px -18px 28px rgba(0,112,180,.13), 0 0 30px rgba(255,255,255,.32);
+      pointer-events: none;
+    }
+
+    .orb.one { width: 210px; height: 210px; left: -82px; top: 160px; }
+    .orb.two { width: 92px; height: 92px; right: -28px; top: 312px; }
+    .orb.three { width: 46px; height: 46px; right: 130px; top: 88px; }
+
+    .shell {
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 38px;
+      padding: 18px;
+      background: linear-gradient(145deg, rgba(255,255,255,.58), rgba(255,255,255,.18));
+      box-shadow: 0 25px 80px rgba(0,77,122,.28), inset 0 1px 0 rgba(255,255,255,.85);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      text-align: center;
+      padding: 42px 22px 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.36)),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.98), transparent 42%);
+      border: 2px solid rgba(255,255,255,.8);
+      box-shadow: inset 0 0 28px rgba(255,255,255,.9), 0 16px 34px rgba(0,78,130,.18);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -70px -30px auto -30px;
+      height: 150px;
+      transform: rotate(-4deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.74), transparent);
+      opacity: .72;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 13px;
+      letter-spacing: .08em;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.25);
+      background: linear-gradient(180deg, #ffbf57, var(--orange));
+      border: 1px solid rgba(255,255,255,.85);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 8px 18px rgba(255,132,0,.32);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(44px, 9vw, 86px);
+      line-height: .9;
+      color: #ffffff;
+      -webkit-text-stroke: 2px rgba(0,101,174,.55);
+      text-shadow: 0 4px 0 #009ee8, 0 8px 18px rgba(0,68,125,.35);
+      letter-spacing: -3px;
+    }
+
+    .tagline {
+      margin: 18px auto 0;
+      max-width: 620px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #075275;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+    .handle {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #0277b8;
+      font-weight: bold;
+    }
+
+    .dock {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .dock a, .link-card {
+      position: relative;
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid rgba(255,255,255,.8);
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.35));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 12px 28px rgba(0,83,130,.18);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .dock a {
+      border-radius: 22px;
+      padding: 14px 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .dock a:hover, .link-card:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 16px 34px rgba(0,83,130,.24);
+    }
+
+    .links {
+      display: grid;
+      gap: 15px;
+    }
+
+    .section-title {
+      margin: 22px 0 12px;
+      color: #ffffff;
+      font-size: 26px;
+      text-shadow: 0 3px 0 rgba(0,119,190,.7), 0 8px 14px rgba(0,0,0,.12);
+      text-align: center;
+    }
+
+    .link-card {
+      border-radius: 28px;
+      padding: 18px 20px 18px 76px;
+      min-height: 72px;
+    }
+
+    .link-card::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      width: 40px;
+      height: 40px;
+      transform: translateY(-50%);
+      border-radius: 13px;
+      background: linear-gradient(145deg, #ffffff, #bbf5ff 48%, #ffad3d 51%, #ff8d00);
+      border: 1px solid rgba(255,255,255,.9);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 4px 12px rgba(0,95,140,.2);
+    }
+
+    .link-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.65) 28%, transparent 45%);
+      transform: translateX(-120%);
+      transition: transform .45s ease;
+    }
+
+    .link-card:hover::after {
+      transform: translateX(120%);
+    }
+
+    .label {
+      position: relative;
+      z-index: 1;
+      display: block;
+      font-size: 18px;
+      font-weight: 900;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+    .desc {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin-top: 5px;
+      font-size: 13px;
+      color: rgba(6,59,92,.72);
+      line-height: 1.35;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: rgba(6,59,92,.7);
+      text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    }
+
+    .butterfly {
+      display: inline-block;
+      filter: drop-shadow(0 4px 5px rgba(0,90,140,.18));
+      animation: flutter 2.8s ease-in-out infinite;
+    }
+
+    @keyframes flutter {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-5px) rotate(5deg); }
+    }
+
+    @media (max-width: 680px) {
+      .page { padding-top: 16px; }
+      .shell { padding: 10px; border-radius: 28px; }
+      .hero { padding: 34px 14px 24px; border-radius: 24px; }
+      .dock { grid-template-columns: repeat(2, 1fr); }
+      .link-card { padding-left: 68px; }
+      h1 { -webkit-text-stroke: 1.2px rgba(0,101,174,.55); }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="avatar"></div>
-            <div class="header-text">
-                <h1>TATE BROWN</h1>
-                <p>6'2 • IQ 85 (tested) • African Explorer • Host @ Timcast</p>
-            </div>
-        </header>
-        
-        <div class="section">
-            <h2>CONNECT</h2>
-            <div class="links">
-                <a href="https://rumble.com" target="_blank" class="link-btn">Watch Timcast Noon Live <span class="arrow">→</span></a>
-                <a href="https://www.youtube.com/@TimcastIRL" target="_blank" class="link-btn">Watch Across the Pond on YouTube <span class="arrow">→</span></a>
-                <a href="https://x.com/realTateBrown" target="_blank" class="link-btn">X / Twitter <span class="arrow">→</span></a>
-                <a href="https://instagram.com/realTateBrown" target="_blank" class="link-btn">Instagram <span class="arrow">→</span></a>
-                <a href="https://www.tiktok.com/@realTateBrown" target="_blank" class="link-btn">TikTok <span class="arrow">→</span></a>
-                <a href="https://substack.com/@realTateBrown" target="_blank" class="link-btn">Substack <span class="arrow">→</span></a>
-            </div>
-        </div>
-        
-        <footer>
-            Official site of Tate Brown from Timcast • Aero Frutiger Y2K Edition
-        </footer>
-    </div>
+  <div class="clouds"></div>
+
+  <main class="page">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+
+    <section class="shell">
+      <header class="hero">
+        <div class="badge">TIMCAST • Y2K LINK HUB</div>
+        <h1>Tate Brown</h1>
+        <p class="tagline">Resident Zoomer apologist at Timcast</p>
+        <p class="handle">@realTateBrown</p>
+      </header>
+
+      <nav class="dock" aria-label="Social links">
+        <a href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">Substack</a>
+        <a href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </nav>
+
+      <h2 class="section-title"><span class="butterfly">🦋</span> Links <span class="butterfly">🫧</span></h2>
+
+      <div class="links">
+        <a class="link-card" href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">
+          <span class="label">My latest on Substack: An analysis of Trump's turtleneck</span>
+          <span class="desc">To the masses, it was simply another quirky Trump moment. To patriots, the message was received clear and concise.</span>
+        </a>
+
+        <a class="link-card" href="https://rumble.com/c/Timcast" target="_blank" rel="noopener noreferrer">
+          <span class="label">rumble.com</span>
+          <span class="desc">Browse the most recent videos from channel "Timcast" uploaded to Rumble.com</span>
+        </a>
+
+        <a class="link-card" href="https://www.youtube.com/playlist?list=PLxQaod7tWvYLXcjgoF4O_vX2geOzzVmJr" target="_blank" rel="noopener noreferrer">
+          <span class="label">Watch Across the Pond with Connor Tomlinson on YouTube</span>
+          <span class="desc">Across the Pond is a weekly news, politics, and culture series presented by Timcast’s Tate Brown and English political commentator Connor Tomlinson.</span>
+        </a>
+
+        <a class="link-card" href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">
+          <span class="label">Instagram</span>
+        </a>
+
+        <a class="link-card" href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">
+          <span class="label">X</span>
+        </a>
+
+        <a class="link-card" href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">
+          <span class="label">TikTok</span>
+        </a>
+      </div>
+
+      <p class="footer">Best viewed on a glossy CRT monitor at 1024 × 768.</p>
+    </section>
+  </main>
 </body>
 </html>
