@@ -8,82 +8,100 @@
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
         :root {
-            --pink: #ff69b4;
+            --hotpink: #ff69b4;
             --cyan: #00f0ff;
-            --lime: #39ff14;
+            --purple: #c724ff;
         }
 
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            background: #0d001a url('https://images.unsplash.com/photo-1617791160588-241658c0f566?q=80&w=1920') center/cover fixed;
+            background: #0a001f url('https://images.unsplash.com/photo-1617791160588-241658c0f566?q=80&w=1920') center/cover fixed;
             color: #fff;
             font-family: 'VT323', monospace;
-            line-height: 1.4;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        .container { max-width: 760px; margin: 40px auto; padding: 20px; }
+        .container { 
+            max-width: 720px; 
+            margin: 40px auto; 
+            padding: 20px; 
+            background: rgba(10, 0, 25, 0.85);
+            border: 6px solid var(--hotpink);
+            box-shadow: 0 0 40px var(--hotpink);
+        }
 
         header {
             text-align: center;
-            border: 4px solid var(--pink);
-            background: rgba(10, 0, 30, 0.95);
-            padding: 30px 20px;
-            box-shadow: 0 0 0 8px #000;
+            padding: 30px 0;
         }
 
         .logo {
             font-family: 'Press Start 2P', system-ui;
-            font-size: 3.8rem;
-            color: #fff;
-            text-shadow: 4px 4px 0 #ff00ff,
-                        -2px -2px 0 #00ffff;
-            letter-spacing: 6px;
+            font-size: 3.6rem;
+            color: white;
+            text-shadow: 3px 3px 0 var(--hotpink),
+                        -3px -3px 0 var(--cyan);
+            letter-spacing: 4px;
+        }
+
+        .tag {
+            font-size: 1.5rem;
+            color: var(--cyan);
+            margin-top: 8px;
         }
 
         .bio {
-            margin: 30px 0;
-            font-size: 1.45rem;
-            background: rgba(0,0,0,0.8);
-            border: 3px solid var(--cyan);
+            text-align: center;
+            font-size: 1.55rem;
+            line-height: 1.5;
+            margin: 35px 0;
             padding: 25px;
+            border: 3px solid var(--purple);
+            background: rgba(0,0,0,0.6);
+        }
+
+        .gif {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .gif img {
+            width: 280px;
+            border: 5px solid var(--hotpink);
+            image-rendering: pixelated;
         }
 
         .links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
         }
 
         .link-btn {
-            background: #110022;
-            border: 4px solid var(--pink);
+            background: rgba(20, 0, 40, 0.9);
+            border: 4px solid var(--hotpink);
             color: white;
-            font-size: 1.5rem;
-            padding: 24px 16px;
+            font-size: 1.55rem;
+            padding: 22px 16px;
             text-align: center;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
         .link-btn:hover {
-            background: #220033;
+            background: rgba(50, 0, 80, 0.95);
             border-color: var(--cyan);
-            transform: translate(-4px, -4px);
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 0 0 25px var(--cyan);
         }
 
         footer {
             text-align: center;
-            margin-top: 60px;
-            font-size: 1.1rem;
+            margin-top: 50px;
+            font-size: 1.2rem;
             color: #aaa;
-        }
-
-        .trump {
-            text-align: center;
-            margin: 30px 0;
         }
     </style>
 </head>
@@ -92,31 +110,24 @@
 
         <header>
             <div class="logo">TATE BROWN</div>
-            <p style="margin-top:12px; font-size:1.6rem; color:#ff69b4;">resident zoomer apologist @ timcast</p>
+            <div class="tag">resident zoomer apologist @ timcast</div>
         </header>
 
         <div class="bio">
             6'2<br>
             IQ 85 (tested)<br>
             African explorer<br>
-            Host @TimcastNews
+            host on timcast irl
         </div>
 
-        <div class="trump">
-            <img src="https://media.giphy.com/media/3o7TKsQ8v0QJ0pL8vO/giphy.gif" width="320" alt="Trump dancing" style="image-rendering: pixelated; border: 4px solid #ff00ff;">
+        <div class="gif">
+            <img src="https://media1.tenor.com/m/b_ElccO6WBgAAAAd/soyjak-soyjak-dancing.gif" alt="soy dancing">
         </div>
 
         <div class="links">
             <a href="https://x.com/realTateBrown" target="_blank" class="link-btn">X → @realTateBrown</a>
             <a href="https://www.instagram.com/realtatebrown/" target="_blank" class="link-btn">INSTAGRAM</a>
+            <a href="https://www.tiktok.com/@tatebrown09" target="_blank" class="link-btn">TIKTOK</a>
             <a href="https://timcast.com/" target="_blank" class="link-btn">TIMCAST IRL</a>
-            <a href="https://www.youtube.com/@TimcastIRL" target="_blank" class="link-btn">YOUTUBE</a>
-            <a href="https://www.youtube.com/@TimcastTateBrown" target="_blank" class="link-btn">CLIPS</a>
-        </div>
-
-        <footer>
-            2001 • best viewed on a CRT • no filter
-        </footer>
-    </div>
-</body>
-</html>
+            <a href="https://rumble.com/c/Timcast" target="_blank" class="link-btn">RUMBLE</a>
+            <a href="https://www.youtube.com/@TimcastIRL" target="_blank" class="link-btn">YOUTUBE</a
