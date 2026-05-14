@@ -3,39 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tate Brown | Links</title>
+  <title>Tate Brown</title>
   <style>
     :root {
-      --sky: #66d9ff;
-      --deep-sky: #008ee6;
-      --water: #00b4d8;
-      --lime: #8df542;
-      --grass: #4ecb35;
-      --orange: #ff9b22;
-      --white-glass: rgba(255, 255, 255, 0.58);
-      --white-glass-strong: rgba(255, 255, 255, 0.78);
-      --ink: #063b5c;
+      --ink: #dff7ff;
+      --muted: rgba(223, 247, 255, .72);
+      --blue: #0b6fd8;
+      --deep: #031131;
+      --glass: rgba(170, 230, 255, .13);
+      --glass-strong: rgba(220, 250, 255, .22);
+      --line: rgba(230, 255, 255, .38);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      min-height: 100%;
-      background: #7ee7ff;
-    }
+    html { min-height: 100%; background: #030816; }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Tahoma, Verdana, Arial, sans-serif;
+      font-family: Verdana, Tahoma, Arial, sans-serif;
       color: var(--ink);
       overflow-x: hidden;
       background:
-        radial-gradient(circle at 84% 10%, rgba(255,255,255,.95) 0 3%, rgba(255,255,255,.45) 4%, transparent 12%),
-        radial-gradient(circle at 24% 24%, rgba(255,255,255,.48), transparent 14%),
-        linear-gradient(to bottom, #1199ff 0%, #7ae8ff 41%, #9bf546 42%, #24b33d 100%);
+        radial-gradient(circle at 72% 10%, rgba(120,230,255,.55) 0 2%, transparent 13%),
+        radial-gradient(circle at 20% 18%, rgba(64,140,255,.5), transparent 28%),
+        radial-gradient(circle at 84% 76%, rgba(0,255,220,.22), transparent 24%),
+        linear-gradient(145deg, #020618 0%, #072462 36%, #078bd8 68%, #02113a 100%);
     }
 
     body::before {
@@ -44,309 +38,339 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 20% 14%, transparent 0 5px, rgba(255,255,255,.85) 6px 7px, transparent 8px),
-        radial-gradient(circle at 65% 22%, transparent 0 9px, rgba(255,255,255,.75) 10px 12px, transparent 13px),
-        radial-gradient(circle at 78% 63%, transparent 0 34px, rgba(255,255,255,.45) 35px 39px, transparent 40px),
-        radial-gradient(circle at 14% 72%, transparent 0 54px, rgba(255,255,255,.34) 55px 62px, transparent 63px);
-      opacity: .85;
+        repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 4px),
+        radial-gradient(circle at 18% 76%, transparent 0 44px, rgba(255,255,255,.24) 45px 47px, transparent 48px),
+        radial-gradient(circle at 78% 62%, transparent 0 86px, rgba(180,245,255,.18) 87px 92px, transparent 93px),
+        radial-gradient(circle at 40% 24%, transparent 0 155px, rgba(255,255,255,.09) 156px 162px, transparent 163px);
+      mix-blend-mode: screen;
+      opacity: .9;
       z-index: 0;
     }
 
-    .clouds {
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        linear-gradient(100deg, transparent 15%, rgba(255,255,255,.12) 28%, transparent 42%),
+        linear-gradient(24deg, transparent 28%, rgba(87,220,255,.14) 32%, transparent 38%),
+        linear-gradient(153deg, transparent 34%, rgba(255,255,255,.08) 39%, transparent 44%);
+      filter: blur(2px);
+      animation: wave 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes wave {
+      from { transform: translate3d(-2%, -1%, 0) rotate(-1deg); }
+      to { transform: translate3d(2%, 1%, 0) rotate(1deg); }
+    }
+
+    .grain {
       position: fixed;
       inset: 0;
-      z-index: 0;
+      z-index: 1;
       pointer-events: none;
-      background:
-        radial-gradient(ellipse at 20% 18%, rgba(255,255,255,.95) 0 5%, transparent 5.5%),
-        radial-gradient(ellipse at 26% 17%, rgba(255,255,255,.92) 0 4%, transparent 4.5%),
-        radial-gradient(ellipse at 31% 19%, rgba(255,255,255,.9) 0 4%, transparent 4.5%),
-        radial-gradient(ellipse at 72% 31%, rgba(255,255,255,.88) 0 3.5%, transparent 4%),
-        radial-gradient(ellipse at 78% 30%, rgba(255,255,255,.84) 0 4.5%, transparent 5%);
-      filter: blur(.2px);
-      animation: drift 28s ease-in-out infinite alternate;
+      opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E");
     }
 
-    @keyframes drift {
-      from { transform: translateX(-18px); }
-      to { transform: translateX(18px); }
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 20%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 19% 58%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 42%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 46% 15%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 62% 36%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 75% 22%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 86% 52%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 67% 80%, #fff 0 1px, transparent 2px);
+      filter: drop-shadow(0 0 5px #c9fbff);
+      opacity: .8;
     }
 
     .page {
       position: relative;
-      z-index: 1;
-      width: min(920px, 94vw);
+      z-index: 2;
+      width: min(860px, 92vw);
       margin: 0 auto;
-      padding: 36px 0 50px;
+      padding: 54px 0 58px;
     }
 
-    .orb {
+    .bubble {
       position: absolute;
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.65);
-      background: radial-gradient(circle at 35% 25%, rgba(255,255,255,.85), rgba(255,255,255,.22) 28%, rgba(71,210,255,.12) 55%, rgba(255,255,255,.05));
-      box-shadow: inset -12px -18px 28px rgba(0,112,180,.13), 0 0 30px rgba(255,255,255,.32);
+      border: 1px solid rgba(230,255,255,.45);
+      background: radial-gradient(circle at 35% 24%, rgba(255,255,255,.72), rgba(120,225,255,.18) 28%, rgba(0,70,180,.08) 64%, transparent 72%);
+      box-shadow: inset -18px -24px 40px rgba(2,20,80,.18), 0 0 42px rgba(130,235,255,.18);
+      pointer-events: none;
+      animation: float 5s ease-in-out infinite alternate;
+    }
+
+    .bubble.one { width: 175px; height: 175px; left: -86px; top: 190px; }
+    .bubble.two { width: 92px; height: 92px; right: -30px; top: 360px; animation-delay: .8s; }
+    .bubble.three { width: 42px; height: 42px; left: 88px; top: 78px; animation-delay: 1.5s; }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-16px); }
+    }
+
+    .wrap {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,.62), rgba(255,255,255,.08) 42%, rgba(0,200,255,.3));
+      box-shadow: 0 30px 90px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.45);
+      overflow: hidden;
+    }
+
+    .wrap::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(from 80deg, transparent, rgba(255,255,255,.16), transparent, rgba(70,230,255,.2), transparent);
+      animation: shimmer 11s linear infinite;
+    }
+
+    @keyframes shimmer { to { transform: rotate(360deg); } }
+
+    .panel {
+      position: relative;
+      z-index: 1;
+      border-radius: 33px;
+      padding: 30px;
+      background:
+        linear-gradient(180deg, rgba(0,29,86,.64), rgba(2,11,35,.72)),
+        radial-gradient(circle at 50% 0%, rgba(120,235,255,.28), transparent 46%);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 0 28%, rgba(255,255,255,.16) 32%, transparent 39%),
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.24), transparent 34%);
       pointer-events: none;
     }
 
-    .orb.one { width: 210px; height: 210px; left: -82px; top: 160px; }
-    .orb.two { width: 92px; height: 92px; right: -28px; top: 312px; }
-    .orb.three { width: 46px; height: 46px; right: 130px; top: 88px; }
-
-    .shell {
-      border: 1px solid rgba(255,255,255,.75);
-      border-radius: 38px;
-      padding: 18px;
-      background: linear-gradient(145deg, rgba(255,255,255,.58), rgba(255,255,255,.18));
-      box-shadow: 0 25px 80px rgba(0,77,122,.28), inset 0 1px 0 rgba(255,255,255,.85);
-      backdrop-filter: blur(14px);
-    }
-
-    .hero {
+    header {
       position: relative;
-      overflow: hidden;
-      border-radius: 30px;
-      text-align: center;
-      padding: 42px 22px 30px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.36)),
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.98), transparent 42%);
-      border: 2px solid rgba(255,255,255,.8);
-      box-shadow: inset 0 0 28px rgba(255,255,255,.9), 0 16px 34px rgba(0,78,130,.18);
+      z-index: 1;
+      text-align: left;
+      padding: 16px 6px 24px;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: -70px -30px auto -30px;
-      height: 150px;
-      transform: rotate(-4deg);
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.74), transparent);
-      opacity: .72;
-    }
-
-    .badge {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-weight: bold;
-      font-size: 13px;
-      letter-spacing: .08em;
-      color: #fff;
-      text-shadow: 0 1px 1px rgba(0,0,0,.25);
-      background: linear-gradient(180deg, #ffbf57, var(--orange));
-      border: 1px solid rgba(255,255,255,.85);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 8px 18px rgba(255,132,0,.32);
+    .kicker {
+      margin: 0 0 13px;
+      font-size: 12px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(224,252,255,.66);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(44px, 9vw, 86px);
-      line-height: .9;
-      color: #ffffff;
-      -webkit-text-stroke: 2px rgba(0,101,174,.55);
-      text-shadow: 0 4px 0 #009ee8, 0 8px 18px rgba(0,68,125,.35);
-      letter-spacing: -3px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(54px, 11vw, 112px);
+      line-height: .82;
+      font-weight: 400;
+      letter-spacing: -6px;
+      color: #f7fdff;
+      text-shadow:
+        0 0 11px rgba(160,244,255,.82),
+        0 8px 0 rgba(0,84,165,.55),
+        0 22px 40px rgba(0,0,0,.55);
     }
 
     .tagline {
-      margin: 18px auto 0;
+      margin: 18px 0 0;
       max-width: 620px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #075275;
-      text-shadow: 0 1px 0 #fff;
-    }
-
-    .handle {
-      margin-top: 10px;
+      color: var(--muted);
       font-size: 15px;
-      color: #0277b8;
-      font-weight: bold;
+      line-height: 1.7;
     }
 
-    .dock {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: 18px 0;
-    }
-
-    .dock a, .link-card {
+    .quick {
       position: relative;
-      display: block;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 6px 0 24px;
+    }
+
+    .quick a {
       text-decoration: none;
       color: var(--ink);
-      border: 1px solid rgba(255,255,255,.8);
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.35));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 12px 28px rgba(0,83,130,.18);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    .dock a {
-      border-radius: 22px;
-      padding: 14px 10px;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .dock a:hover, .link-card:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 16px 34px rgba(0,83,130,.24);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 10px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(235,255,255,.42);
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.34), 0 10px 25px rgba(0,0,0,.18);
     }
 
     .links {
+      position: relative;
+      z-index: 1;
       display: grid;
-      gap: 15px;
-    }
-
-    .section-title {
-      margin: 22px 0 12px;
-      color: #ffffff;
-      font-size: 26px;
-      text-shadow: 0 3px 0 rgba(0,119,190,.7), 0 8px 14px rgba(0,0,0,.12);
-      text-align: center;
+      gap: 13px;
     }
 
     .link-card {
-      border-radius: 28px;
-      padding: 18px 20px 18px 76px;
-      min-height: 72px;
+      position: relative;
+      display: block;
+      min-height: 78px;
+      padding: 18px 20px 18px 72px;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid rgba(235,255,255,.38);
+      border-radius: 22px;
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.22), rgba(255,255,255,.06) 44%, rgba(0,180,255,.1)),
+        radial-gradient(circle at 0% 50%, rgba(115,235,255,.18), transparent 28%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 16px 38px rgba(0,0,0,.25);
+      overflow: hidden;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.72);
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.3), rgba(255,255,255,.08) 44%, rgba(0,180,255,.16)),
+        radial-gradient(circle at 0% 50%, rgba(115,235,255,.26), transparent 28%);
     }
 
     .link-card::before {
       content: "";
       position: absolute;
-      left: 18px;
+      left: 20px;
       top: 50%;
-      width: 40px;
-      height: 40px;
-      transform: translateY(-50%);
-      border-radius: 13px;
-      background: linear-gradient(145deg, #ffffff, #bbf5ff 48%, #ffad3d 51%, #ff8d00);
-      border: 1px solid rgba(255,255,255,.9);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 4px 12px rgba(0,95,140,.2);
+      width: 31px;
+      height: 31px;
+      transform: translateY(-50%) rotate(45deg);
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,.56);
+      background:
+        radial-gradient(circle at 28% 24%, rgba(255,255,255,.85), rgba(255,255,255,.08) 32%),
+        linear-gradient(135deg, rgba(118,242,255,.75), rgba(22,95,222,.3));
+      box-shadow: 0 0 18px rgba(130,240,255,.34), inset 0 1px 0 rgba(255,255,255,.55);
     }
 
     .link-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.65) 28%, transparent 45%);
-      transform: translateX(-120%);
-      transition: transform .45s ease;
+      background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.24) 34%, transparent 52%);
+      transform: translateX(-115%);
+      transition: transform .5s ease;
     }
 
-    .link-card:hover::after {
-      transform: translateX(120%);
-    }
+    .link-card:hover::after { transform: translateX(120%); }
+
+    .label, .desc { position: relative; z-index: 1; }
 
     .label {
-      position: relative;
-      z-index: 1;
       display: block;
-      font-size: 18px;
-      font-weight: 900;
-      text-shadow: 0 1px 0 #fff;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 700;
+      text-shadow: 0 0 11px rgba(135,240,255,.32);
     }
 
     .desc {
+      display: block;
+      margin-top: 6px;
+      color: rgba(223,247,255,.61);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    footer {
       position: relative;
       z-index: 1;
-      display: block;
-      margin-top: 5px;
-      font-size: 13px;
-      color: rgba(6,59,92,.72);
-      line-height: 1.35;
-    }
-
-    .footer {
+      margin-top: 22px;
+      color: rgba(223,247,255,.45);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
       text-align: center;
-      margin-top: 24px;
-      font-size: 12px;
-      color: rgba(6,59,92,.7);
-      text-shadow: 0 1px 0 rgba(255,255,255,.7);
-    }
-
-    .butterfly {
-      display: inline-block;
-      filter: drop-shadow(0 4px 5px rgba(0,90,140,.18));
-      animation: flutter 2.8s ease-in-out infinite;
-    }
-
-    @keyframes flutter {
-      0%, 100% { transform: translateY(0) rotate(-4deg); }
-      50% { transform: translateY(-5px) rotate(5deg); }
     }
 
     @media (max-width: 680px) {
-      .page { padding-top: 16px; }
-      .shell { padding: 10px; border-radius: 28px; }
-      .hero { padding: 34px 14px 24px; border-radius: 24px; }
-      .dock { grid-template-columns: repeat(2, 1fr); }
-      .link-card { padding-left: 68px; }
-      h1 { -webkit-text-stroke: 1.2px rgba(0,101,174,.55); }
+      .page { padding: 24px 0 34px; }
+      .panel { padding: 20px; }
+      h1 { letter-spacing: -4px; }
+      .link-card { padding-left: 62px; }
+      .bubble.one { left: -118px; }
     }
   </style>
 </head>
 <body>
-  <div class="clouds"></div>
+  <div class="grain"></div>
+  <div class="stars"></div>
 
   <main class="page">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-    <div class="orb three"></div>
+    <div class="bubble one"></div>
+    <div class="bubble two"></div>
+    <div class="bubble three"></div>
 
-    <section class="shell">
-      <header class="hero">
-        <div class="badge">TIMCAST • Y2K LINK HUB</div>
-        <h1>Tate Brown</h1>
-        <p class="tagline">Resident Zoomer apologist at Timcast</p>
-        <p class="handle">@realTateBrown</p>
-      </header>
+    <section class="wrap">
+      <div class="panel">
+        <header>
+          <p class="kicker">@realTateBrown</p>
+          <h1>Tate Brown</h1>
+          <p class="tagline">Resident Zoomer apologist at Timcast.</p>
+        </header>
 
-      <nav class="dock" aria-label="Social links">
-        <a href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">X</a>
-        <a href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">Substack</a>
-        <a href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">TikTok</a>
-      </nav>
+        <nav class="quick" aria-label="Social links">
+          <a href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">Substack</a>
+          <a href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">TikTok</a>
+        </nav>
 
-      <h2 class="section-title"><span class="butterfly">🦋</span> Links <span class="butterfly">🫧</span></h2>
+        <div class="links">
+          <a class="link-card" href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">
+            <span class="label">My latest on Substack: An analysis of Trump's turtleneck</span>
+            <span class="desc">To the masses, it was simply another quirky Trump moment. To patriots, the message was received clear and concise.</span>
+          </a>
 
-      <div class="links">
-        <a class="link-card" href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">
-          <span class="label">My latest on Substack: An analysis of Trump's turtleneck</span>
-          <span class="desc">To the masses, it was simply another quirky Trump moment. To patriots, the message was received clear and concise.</span>
-        </a>
+          <a class="link-card" href="https://rumble.com/c/Timcast" target="_blank" rel="noopener noreferrer">
+            <span class="label">rumble.com</span>
+            <span class="desc">Browse the most recent videos from channel "Timcast" uploaded to Rumble.com</span>
+          </a>
 
-        <a class="link-card" href="https://rumble.com/c/Timcast" target="_blank" rel="noopener noreferrer">
-          <span class="label">rumble.com</span>
-          <span class="desc">Browse the most recent videos from channel "Timcast" uploaded to Rumble.com</span>
-        </a>
+          <a class="link-card" href="https://www.youtube.com/playlist?list=PLxQaod7tWvYLXcjgoF4O_vX2geOzzVmJr" target="_blank" rel="noopener noreferrer">
+            <span class="label">Watch Across the Pond with Connor Tomlinson on YouTube</span>
+            <span class="desc">Across the Pond is a weekly news, politics, and culture series presented by Timcast’s Tate Brown and English political commentator Connor Tomlinson.</span>
+          </a>
 
-        <a class="link-card" href="https://www.youtube.com/playlist?list=PLxQaod7tWvYLXcjgoF4O_vX2geOzzVmJr" target="_blank" rel="noopener noreferrer">
-          <span class="label">Watch Across the Pond with Connor Tomlinson on YouTube</span>
-          <span class="desc">Across the Pond is a weekly news, politics, and culture series presented by Timcast’s Tate Brown and English political commentator Connor Tomlinson.</span>
-        </a>
+          <a class="link-card" href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">
+            <span class="label">Instagram</span>
+          </a>
 
-        <a class="link-card" href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">
-          <span class="label">Instagram</span>
-        </a>
+          <a class="link-card" href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">
+            <span class="label">X</span>
+          </a>
 
-        <a class="link-card" href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">
-          <span class="label">X</span>
-        </a>
-
-        <a class="link-card" href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">
-          <span class="label">TikTok</span>
-        </a>
+          <a class="link-card" href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">
+            <span class="label">TikTok</span>
+          </a>
+        </div>
       </div>
-
-      <p class="footer">Best viewed on a glossy CRT monitor at 1024 × 768.</p>
     </section>
   </main>
 </body>
