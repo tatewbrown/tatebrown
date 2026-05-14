@@ -5,143 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TATE BROWN</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
         :root {
             --orange: #ff7a00;
-            --aero-blue: #00b0ff;
-            --glass-bg: rgba(255, 255, 255, 0.09);
-            --glass-border: rgba(255, 255, 255, 0.25);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background: linear-gradient(135deg, #001a33 0%, #003366 100%);
+            background: linear-gradient(135deg, #001a33 0%, #002b4d 100%);
             color: #ffffff;
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             min-height: 100vh;
             background-attachment: fixed;
-            overflow-x: hidden;
-            line-height: 1.5;
         }
         
         .container {
-            max-width: 1080px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 40px 20px;
         }
         
         header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 32px;
             margin-bottom: 80px;
             flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 24px;
         }
         
         .avatar {
-            width: 128px;
-            height: 128px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            background: url('https://pbs.twimg.com/profile_images/2021988620333404160/ZizmGr0N.jpg') center/cover no-repeat;
-            border: 8px solid rgba(255, 122, 0, 0.6);
-            box-shadow: 
-                0 0 0 12px rgba(255, 122, 0, 0.15),
-                0 25px 50px -12px rgba(0, 0, 0, 0.4),
-                inset 0 0 40px rgba(255, 255, 255, 0.3);
-            position: relative;
+            background: url('https://pbs.twimg.com/profile_images/2021988620333404160/ZizmGr0N.jpg') center/cover;
+            border: 10px solid rgba(255, 122, 0, 0.8);
+            box-shadow: 0 0 0 18px rgba(255, 122, 0, 0.25), 0 30px 60px -15px rgba(0,0,0,0.5);
         }
         
-        .avatar::before {
-            content: '';
-            position: absolute;
-            inset: -6px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.4));
-            opacity: 0.25;
-            z-index: -1;
-        }
-        
-        .name {
-            font-size: 3.2rem;
+        .header-text h1 {
+            font-size: 4.2rem;
             font-weight: 700;
-            letter-spacing: -2px;
-            line-height: 1;
+            letter-spacing: -3px;
         }
         
-        .tagline {
-            font-size: 1.25rem;
-            opacity: 0.85;
-            margin-top: 8px;
-        }
-        
-        .bio {
-            max-width: 520px;
-            font-size: 1.35rem;
+        .header-text p {
+            font-size: 1.45rem;
             opacity: 0.9;
             margin-top: 8px;
         }
         
-        main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 60px;
-        }
-        
         .section {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 48px 40px;
+            background: rgba(255,255,255,0.085);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 28px;
+            padding: 52px 48px;
             backdrop-filter: blur(24px);
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.3),
-                inset 0 2px 0 rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
         }
         
-        h2 {
-            font-size: 1.85rem;
-            font-weight: 600;
-            margin-bottom: 32px;
-            letter-spacing: -0.5px;
-            color: #fff;
-            text-align: center;
-        }
+        h2 { text-align: center; font-size: 2.1rem; margin-bottom: 40px; font-weight: 600; }
         
         .links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 18px;
         }
         
         .link-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 122, 0, 0.3);
-            border-radius: 16px;
-            padding: 22px 28px;
+            padding: 26px 32px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,122,0,0.4);
+            border-radius: 18px;
             color: white;
             text-decoration: none;
             font-size: 1.35rem;
             font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 15px -3px rgba(255, 122, 0, 0.1);
+            transition: all 0.35s ease;
         }
         
         .link-btn:hover {
-            transform: translateY(-4px);
-           
+            background: rgba(255,122,0,0.22);
+            border-color: #ff7a00;
+            transform: translateY(-6px);
+        }
+        
+        .arrow { font-size: 2rem; }
+        .link-btn:hover .arrow { transform: translateX(10px); }
+        
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="avatar"></div>
+            <div class="header-text">
+                <h1>TATE BROWN</h1>
+                <p>6'2 • IQ 85 (tested) • African Explorer • Host @ Timcast</p>
+            </div>
+        </header>
+        
+        <div class="section">
+            <h2>CONNECT</h2>
+            <div class="links">
+                <a href="https://rumble.com" target="_blank" class="link-btn">Watch Timcast Noon Live <span class="arrow">→</span></a>
+                <a href="https://www.youtube.com/@TimcastIRL" target="_blank" class="link-btn">Watch Across the Pond on YouTube <span class="arrow">→</span></a>
+                <a href="https://x.com/realTateBrown" target="_blank" class="link-btn">X / Twitter <span class="arrow">→</span></a>
+                <a href="https://instagram.com/realTateBrown" target="_blank" class="link-btn">Instagram <span class="arrow">→</span></a>
+                <a href="https://www.tiktok.com/@realTateBrown" target="_blank" class="link-btn">TikTok <span class="arrow">→</span></a>
+                <a href="https://substack.com/@realTateBrown" target="_blank" class="link-btn">Substack <span class="arrow">→</span></a>
+            </div>
+        </div>
+        
+        <footer>
+            Official site of Tate Brown from Timcast • Aero Frutiger Y2K Edition
+        </footer>
+    </div>
+</body>
+</html>
