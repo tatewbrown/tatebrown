@@ -14,6 +14,8 @@
       --dark: #041022;
       --blue: #1d6cff;
       --cyan: #2ae7ff;
+      --lime: #b8ff36;
+      --pink: #ff4fd8;
     }
 
     * { box-sizing: border-box; }
@@ -37,7 +39,7 @@
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      opacity: .25;
+      opacity: .31;
       background:
         repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 3px),
         repeating-linear-gradient(90deg, rgba(255,255,255,.015) 0 1px, transparent 1px 8px);
@@ -69,7 +71,7 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      opacity: .1;
+      opacity: .11;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.82'/%3E%3C/svg%3E");
     }
 
@@ -78,7 +80,7 @@
       inset: -18% -12%;
       z-index: 0;
       pointer-events: none;
-      opacity: .12;
+      opacity: .10;
       filter: blur(18px);
       transform: rotate(-8deg);
       background:
@@ -119,7 +121,7 @@
       box-shadow:
         inset -18px -24px 40px rgba(0,15,65,.35),
         0 0 36px rgba(145,240,255,.14);
-      opacity: .38;
+      opacity: .34;
       animation: floaty 7s ease-in-out infinite alternate;
       background:
         radial-gradient(circle at 35% 24%, rgba(255,255,255,.72), rgba(255,255,255,.06) 28%, transparent 56%);
@@ -155,13 +157,30 @@
       to   { transform: translateY(-18px) translateX(6px); }
     }
 
+    .flash-rays {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: .23;
+      background:
+        radial-gradient(circle at 50% 50%, transparent 0 9%, rgba(255,255,255,.08) 10%, transparent 13%),
+        conic-gradient(from 0deg at 50% 50%, transparent 0 14deg, rgba(255,255,255,.08) 15deg 17deg, transparent 18deg 34deg);
+      animation: pulseRays 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseRays {
+      from { transform: scale(1) rotate(0deg); opacity: .16; }
+      to { transform: scale(1.08) rotate(8deg); opacity: .27; }
+    }
+
     .page {
       position: relative;
       z-index: 3;
-      width: min(760px, 92vw);
+      width: min(840px, 92vw);
       min-height: 100vh;
       margin: 0 auto;
-      padding: 32px 0;
+      padding: 32px 0 42px;
       display: grid;
       place-items: center;
     }
@@ -191,9 +210,7 @@
       opacity: .6;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .window {
       position: relative;
@@ -226,10 +243,7 @@
       color: rgba(234,252,255,.72);
     }
 
-    .controls {
-      display: flex;
-      gap: 7px;
-    }
+    .controls { display: flex; gap: 7px; }
 
     .controls span {
       width: 11px;
@@ -243,7 +257,7 @@
 
     .content {
       position: relative;
-      padding: 34px 28px 34px;
+      padding: 34px 28px 38px;
       min-height: 620px;
       display: grid;
       align-items: center;
@@ -300,14 +314,6 @@
         0 18px 38px rgba(0,0,0,.72);
     }
 
-    .sub {
-      margin: 16px auto 0;
-      max-width: 420px;
-      color: var(--soft);
-      font-size: 15px;
-      line-height: 1.75;
-    }
-
     .link-stack {
       position: relative;
       z-index: 3;
@@ -341,7 +347,7 @@
     }
 
     .link:hover {
-      transform: translateX(4px);
+      transform: translateX(4px) scale(1.01);
       border-color: rgba(255,255,255,.68);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.5),
@@ -359,9 +365,7 @@
       transition: transform .45s ease;
     }
 
-    .link:hover::before {
-      transform: translateX(115%);
-    }
+    .link:hover::before { transform: translateX(115%); }
 
     .icon {
       position: relative;
@@ -377,11 +381,7 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.82), 0 7px 18px rgba(0,0,0,.18);
     }
 
-    .icon svg {
-      width: 24px;
-      height: 24px;
-      display: block;
-    }
+    .icon svg { width: 28px; height: 28px; display: block; }
 
     .copy {
       position: relative;
@@ -417,35 +417,107 @@
       filter: drop-shadow(0 0 6px rgba(0,213,255,.5));
     }
 
+    .photo-section {
+      position: relative;
+      z-index: 4;
+      margin: 22px auto 0;
+      width: min(680px, 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.32);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.05)),
+        radial-gradient(circle at 0% 0%, rgba(0,230,255,.13), transparent 35%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 15px 38px rgba(0,0,0,.23);
+      padding: 14px;
+      overflow: hidden;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      color: rgba(237,250,255,.82);
+      font-size: 12px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      font-weight: normal;
+      text-align: left;
+    }
+
+    .africa-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .africa-slot {
+      position: relative;
+      min-height: 92px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.28);
+      background:
+        radial-gradient(circle at 35% 20%, rgba(255,255,255,.28), transparent 28%),
+        linear-gradient(135deg, rgba(0,200,255,.16), rgba(255,255,255,.04));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
+      overflow: hidden;
+    }
+
+    .africa-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .africa-slot::after {
+      content: "add photo";
+      position: absolute;
+      inset: auto 0 9px;
+      text-align: center;
+      color: rgba(237,250,255,.56);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .music-box {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 10;
+      width: 230px;
+      height: 76px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.3);
+      box-shadow: 0 12px 34px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.35);
+      opacity: .78;
+      background: rgba(0,0,0,.4);
+    }
+
+    .music-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     @media (max-width: 720px) {
-      .content {
-        padding: 24px 16px 24px;
-        min-height: auto;
-      }
-
-      .label, .desc {
-        white-space: normal;
-      }
-
+      .content { padding: 24px 16px 24px; min-height: auto; }
+      .label, .desc { white-space: normal; }
       .b1 { width: 150px; height: 150px; }
       .b2 { width: 82px; height: 82px; }
       .b3 { width: 120px; height: 120px; }
       .b4 { width: 160px; height: 160px; }
       .b6 { width: 110px; height: 110px; }
-
-      .link {
-        grid-template-columns: 44px 1fr 16px;
-      }
-
-      .icon {
-        width: 44px;
-      }
+      .link { grid-template-columns: 44px 1fr 16px; }
+      .icon { width: 44px; }
+      .africa-grid { grid-template-columns: repeat(2, 1fr); }
+      .music-box { width: 180px; height: 64px; }
     }
   </style>
 </head>
 <body>
   <div class="flag-glow"></div>
   <div class="noise"></div>
+  <div class="flash-rays"></div>
 
   <div class="background-bubbles" aria-hidden="true">
     <div class="bg-bubble b1">
@@ -472,10 +544,8 @@
     <section class="site">
       <div class="window">
         <div class="topbar">
-          <div class="brand-small">tatebrown.net</div>
-          <div class="controls" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
+          <div class="brand-small">tatebrown.com</div>
+          <div class="controls" aria-hidden="true"><span></span><span></span><span></span></div>
         </div>
 
         <div class="content">
@@ -483,18 +553,17 @@
             <header class="hero">
               <span class="eyebrow">@realTateBrown</span>
               <h1>tate <span>brown</span></h1>
-              <p class="sub">Resident Zoomer apologist at Timcast.</p>
             </header>
 
             <nav class="link-stack" aria-label="Links">
               <a class="link" href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">
                 <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <rect x="5" y="4" width="14" height="16" rx="1.5" fill="#09162D"/>
-                    <rect x="7" y="6" width="10" height="1.6" fill="#ffffff"/>
-                    <rect x="7" y="9.3" width="10" height="1.6" fill="#ffffff"/>
-                    <rect x="7" y="12.6" width="10" height="1.6" fill="#ffffff"/>
-                    <rect x="7" y="15.9" width="7" height="1.6" fill="#ffffff"/>
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <rect x="7" y="4" width="18" height="24" rx="2" fill="#fff" opacity=".9"/>
+                    <rect x="10" y="8" width="12" height="2" fill="#ff6a00"/>
+                    <rect x="10" y="12" width="12" height="2" fill="#ff6a00"/>
+                    <rect x="10" y="16" width="12" height="2" fill="#ff6a00"/>
+                    <rect x="10" y="20" width="8" height="2" fill="#ff6a00"/>
                   </svg>
                 </span>
                 <span class="copy">
@@ -506,8 +575,8 @@
 
               <a class="link" href="https://rumble.com/c/Timcast" target="_blank" rel="noopener noreferrer">
                 <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <polygon points="7,5 18,12 7,19" fill="#09162D"/>
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <path d="M10 7l14 9-14 9V7z" fill="#6dff4b" stroke="#06270b" stroke-width="1.5"/>
                   </svg>
                 </span>
                 <span class="copy">
@@ -519,9 +588,9 @@
 
               <a class="link" href="https://www.youtube.com/playlist?list=PLxQaod7tWvYLXcjgoF4O_vX2geOzzVmJr" target="_blank" rel="noopener noreferrer">
                 <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="6.5" width="18" height="11" rx="2.8" fill="#D60000"/>
-                    <polygon points="10,9 16,12 10,15" fill="#ffffff"/>
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <rect x="5" y="9" width="22" height="14" rx="3" fill="#c40000" stroke="#fff" stroke-width="1"/>
+                    <path d="M14 12.5l7 3.5-7 3.5v-7z" fill="#fff"/>
                   </svg>
                 </span>
                 <span class="copy">
@@ -533,46 +602,58 @@
 
               <a class="link" href="https://www.instagram.com/realtatebrown" target="_blank" rel="noopener noreferrer">
                 <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <rect x="5" y="5" width="14" height="14" rx="4" stroke="#09162D" stroke-width="2"/>
-                    <circle cx="12" cy="12" r="3.2" stroke="#09162D" stroke-width="2"/>
-                    <circle cx="16.4" cy="7.8" r="1.1" fill="#09162D"/>
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <rect x="7" y="7" width="18" height="18" rx="4" fill="#f6f0dc" stroke="#4b2b15" stroke-width="2"/>
+                    <rect x="9" y="9" width="14" height="5" fill="#8b5a2b" opacity=".9"/>
+                    <circle cx="16" cy="17" r="4.2" fill="#1b1b1b"/>
+                    <circle cx="16" cy="17" r="2.4" fill="#66d9ff"/>
+                    <circle cx="21.5" cy="10.5" r="1.3" fill="#fff"/>
                   </svg>
                 </span>
-                <span class="copy">
-                  <span class="label">Instagram</span>
-                </span>
+                <span class="copy"><span class="label">Instagram</span></span>
                 <span class="arrow"></span>
               </a>
 
               <a class="link" href="https://x.com/realTateBrown" target="_blank" rel="noopener noreferrer">
                 <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M18.8 7.6c-.5.2-1 .3-1.6.4.6-.4 1-.9 1.3-1.6-.5.3-1.1.6-1.8.7-.5-.5-1.2-.8-2-.8-1.6 0-2.9 1.3-2.9 2.9 0 .2 0 .4.1.7-2.4-.1-4.5-1.3-5.9-3-.2.4-.4.9-.4 1.5 0 1 .5 1.9 1.3 2.4-.5 0-.9-.1-1.3-.4 0 0 0 0 0 .1 0 1.4 1 2.5 2.2 2.8-.2.1-.5.1-.8.1-.2 0-.4 0-.5-.1.4 1.1 1.4 1.9 2.7 1.9-1 .8-2.3 1.3-3.7 1.3-.2 0-.5 0-.7 0 1.3.8 2.9 1.2 4.5 1.2 5.4 0 8.4-4.5 8.4-8.4v-.4c.6-.4 1-.9 1.4-1.5z" fill="#09162D"/>
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <path d="M27 10.2c-.8.4-1.7.6-2.6.7.9-.6 1.6-1.4 1.9-2.5-.9.5-1.9.9-2.9 1.1-.8-.9-2-1.4-3.2-1.4-2.4 0-4.4 2-4.4 4.4 0 .3 0 .7.1 1C12.2 13.3 9 11.5 6.8 8.8c-.4.7-.6 1.4-.6 2.2 0 1.5.8 2.9 2 3.7-.7 0-1.4-.2-2-.5v.1c0 2.2 1.5 4 3.6 4.4-.4.1-.8.2-1.2.2-.3 0-.6 0-.8-.1.6 1.8 2.2 3.1 4.1 3.1-1.5 1.2-3.5 1.9-5.6 1.9-.4 0-.7 0-1.1-.1 2 1.3 4.4 2 6.9 2 8.3 0 12.9-6.9 12.9-12.9v-.6c.9-.6 1.6-1.4 2.2-2.3z" fill="#25a8e0" stroke="#fff" stroke-width=".5"/>
                   </svg>
                 </span>
-                <span class="copy">
-                  <span class="label">X</span>
-                </span>
+                <span class="copy"><span class="label">X</span></span>
                 <span class="arrow"></span>
               </a>
 
               <a class="link" href="https://www.tiktok.com/@realtatebrown" target="_blank" rel="noopener noreferrer">
                 <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M14.4 5.2c.7 1.5 1.8 2.5 3.5 2.8v2.2c-1.2 0-2.3-.3-3.3-.9v5.1c0 2.6-2.1 4.6-4.7 4.6s-4.7-2-4.7-4.6 2.1-4.7 4.7-4.7c.3 0 .7 0 1 .1V12c-.3-.1-.6-.1-1-.1-1.3 0-2.4 1-2.4 2.4 0 1.3 1.1 2.3 2.4 2.3s2.4-1 2.4-2.3V5.2h2.1z" fill="#09162D"/>
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <path d="M19.4 7.5c.8 1.9 2.2 3.2 4.4 3.6v3c-1.5 0-2.9-.4-4.1-1.1v6.2c0 3.2-2.6 5.7-5.8 5.7s-5.8-2.5-5.8-5.7 2.6-5.8 5.8-5.8c.4 0 .8 0 1.2.1v3.1c-.4-.1-.8-.2-1.2-.2-1.5 0-2.8 1.2-2.8 2.8s1.3 2.7 2.8 2.7 2.8-1.2 2.8-2.7V7.5h2.7z" fill="#111"/>
+                    <path d="M20.1 7.5c.7 1.6 1.8 2.8 3.7 3.4" stroke="#ff2bd6" stroke-width="1.2"/>
+                    <path d="M15.1 16.7c-.4-.1-.8-.2-1.2-.2-1.5 0-2.8 1.2-2.8 2.8" stroke="#20e7ff" stroke-width="1.2"/>
                   </svg>
                 </span>
-                <span class="copy">
-                  <span class="label">TikTok</span>
-                </span>
+                <span class="copy"><span class="label">TikTok</span></span>
                 <span class="arrow"></span>
               </a>
             </nav>
+
+            <section class="photo-section" aria-label="Africa photos section">
+              <h2 class="section-title">Africa photos</h2>
+              <div class="africa-grid">
+                <div class="africa-slot"><!-- Replace this slot with: <img src="images/africa-1.jpg" alt="Africa photo 1"> --></div>
+                <div class="africa-slot"><!-- Replace this slot with: <img src="images/africa-2.jpg" alt="Africa photo 2"> --></div>
+                <div class="africa-slot"><!-- Replace this slot with: <img src="images/africa-3.jpg" alt="Africa photo 3"> --></div>
+                <div class="africa-slot"><!-- Replace this slot with: <img src="images/africa-4.jpg" alt="Africa photo 4"> --></div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="music-box" title="Background music">
+    <iframe src="https://www.youtube.com/embed/rCElGHuHDwY?autoplay=1&loop=1&playlist=rCElGHuHDwY" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
 </body>
 </html>
