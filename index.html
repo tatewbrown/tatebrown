@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tate Brown</title>
+  <title>tate brown</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -248,6 +248,38 @@
       letter-spacing: .18em;
       text-transform: uppercase;
       color: rgba(234,252,255,.72);
+    }
+
+    .inquiries {
+      margin-left: auto;
+      margin-right: 14px;
+      color: rgba(237,250,255,.84);
+      text-decoration: none;
+      font-family: "Press Start 2P", Verdana, Tahoma, Arial, sans-serif;
+      font-size: 7px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(42,231,255,.35);
+    }
+
+    .inquiries:hover {
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255,79,216,.55), 0 0 16px rgba(42,231,255,.45);
+    }
+
+    .controls { display: flex; gap: 7px; }      margin-right: 14px;
+      color: rgba(237,250,255,.84);
+      text-decoration: none;
+      font-family: "Press Start 2P", Verdana, Tahoma, Arial, sans-serif;
+      font-size: 7px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(42,231,255,.35);
+    }
+
+    .inquiries:hover {
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255,79,216,.55), 0 0 16px rgba(42,231,255,.45);
     }
 
     .controls { display: flex; gap: 7px; }
@@ -594,9 +626,34 @@
       border-left-color: rgba(255,255,255,.5);
       background:
         linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.05)),
-        radial-gradient(circle at 0% 0%, rgba(255,79,216,.12), transparent 42%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -10px 18px rgba(0,0,0,.15);
-      padding: 10px;
+        radial-gradient(circle at 0% 0%, rgba(255,79,216,.12), transp    .cover img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .recipe-card {
+      grid-template-columns: 96px 1fr;
+      width: min(520px, 100%);
+    }
+
+    .recipe-cover {
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.28), transparent 34%),
+        linear-gradient(135deg, rgba(184,255,54,.22), rgba(255,79,216,.14), rgba(0,190,255,.1));
+    }
+
+    .recipe-cover span {
+      font-family: "Press Start 2P", Verdana, Tahoma, Arial, sans-serif;
+      font-size: 8px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(237,250,255,.75);
+      transform: rotate(-9deg);
+    }padding: 10px;
       min-height: 150px;
     }
 
@@ -616,6 +673,26 @@
       display: block;
       object-fit: cover;
     }
+
+    .recipe-card {
+      grid-template-columns: 96px 1fr;
+      width: min(520px, 100%);
+    }
+
+    .recipe-cover {
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.28), transparent 34%),
+        linear-gradient(135deg, rgba(184,255,54,.22), rgba(255,79,216,.14), rgba(0,190,255,.1));
+    }
+
+    .recipe-cover span {
+      font-family: "Press Start 2P", Verdana, Tahoma, Arial, sans-serif;
+      font-size: 8px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(237,
 
     .latest-kicker {
       display: block;
@@ -706,9 +783,8 @@
     }
 
     .cursor-sparkle {
-      position: fixed;
-      width: 8px;
-      height: 8px;
+            .music-toggle { right: 10px; bottom: 10px; }
+      .inquiries { display: none; }px;
       pointer-events: none;
       z-index: 999;
       border-radius: 50%;
@@ -735,7 +811,7 @@
       .africa-grid { grid-template-columns: repeat(2, 1fr); }
       .latest-grid { grid-template-columns: 1fr; }
       .music-toggle { right: 10px; bottom: 10px; }
-      .profile-pic { width: 132px; height: 132px; }
+}
     }
   </style>
 </head>
@@ -750,9 +826,9 @@
 
   <div class="background-bubbles" aria-hidden="true">
     <div class="bg-bubble b1">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Aldrin%20Apollo%2011%20original.jpg" alt="">
-    </div>
-    <div class="bg-bubble b2">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePat          <div class="brand-small">tatebrown.com</div>
+          <a class="inquiries" href="mailto:inquiries.tatebrown@hotmail.com">inquiries</a>
+          <div class="controls"">
       <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Earth%20seen%20from%20Apollo%2017.jpg" alt="">
     </div>
     <div class="bg-bubble b3">
@@ -774,6 +850,7 @@
       <div class="window">
         <div class="topbar">
           <div class="brand-small">tatebrown.com</div>
+          <a class="inquiries" href="mailto:inquiries.tatebrown@hotmail.com">inquiries</a>
           <div class="controls" aria-hidden="true"><span></span><span></span><span></span></div>
         </div>
 
@@ -864,8 +941,7 @@
                 <span class="icon" aria-hidden="true">
                   <svg viewBox="0 0 32 32" fill="none">
                     <path d="M19.4 7.5c.8 1.9 2.2 3.2 4.4 3.6v3c-1.5 0-2.9-.4-4.1-1.1v6.2c0 3.2-2.6 5.7-5.8 5.7s-5.8-2.5-5.8-5.7 2.6-5.8 5.8-5.8c.4 0 .8 0 1.2.1v3.1c-.4-.1-.8-.2-1.2-.2-1.5 0-2.8 1.2-2.8 2.8s1.3 2.7 2.8 2.7 2.8-1.2 2.8-2.7V7.5h2.7z" fill="#111"/>
-                    <path d="M20.1 7.5c.7 1.6 1.8 2.8 3.7 3.4" stroke="#ff2bd6" stroke-width="1.2"/>
-                    <path d="M15.1 16.7c-.4-.1-.8-.2-1.2-.2-1.5 0-2.8 1.2-2.8 2.8" stroke="#20e7ff" stroke-width="1.2"/>
+                    <path d="M20.1 7.5c.7 1.6 1.8 2.8 3.7 3.4" stroke="#f<h2 class="section-title">What I've Been Consuming</h2>           <path d="M15.1 16.7c-.4-.1-.8-.2-1.2-.2-1.5 0-2.8 1.2-2.8 2.8" stroke="#20e7ff" stroke-width="1.2"/>
                   </svg>
                 </span>
                 <span class="copy"><span class="label">TikTok</span></span>
@@ -884,7 +960,22 @@
             </section>
 
             <section class="latest-section" aria-label="Latest read and latest movie">
-              <h2 class="section-title">Latest</h2>
+              <h2 cla            </section>
+
+            <section class="latest-section" aria-label="Recipe of the Month">
+              <h2 class="section-title">Recipe of the Month</h2>
+              <div class="latest-card recipe-card">
+                <div class="cover recipe-cover">
+                  <span>soon</span>
+                </div>
+                <div>
+                  <span class="latest-kicker">Monthly recipe</span>
+                  <span class="latest-title">Coming soon</span>
+                  <p class="review">Recipe coming soon.</p>
+                </div>
+              </div>
+            </section>
+          </div>ming</h2>
               <div class="latest-grid">
                 <article class="latest-card">
                   <div class="cover"><img src="images/shantaram-cover.jpg" alt="Shantaram book cover"></div>
@@ -905,6 +996,20 @@
                     <p class="review">Review coming soon.</p>
                   </div>
                 </article>
+              </div>
+            </section>
+
+            <section class="latest-section" aria-label="Recipe of the Month">
+              <h2 class="section-title">Recipe of the Month</h2>
+              <div class="latest-card recipe-card">
+                <div class="cover recipe-cover">
+                  <span>soon</span>
+                </div>
+                <div>
+                  <span class="latest-kicker">Monthly recipe</span>
+                  <span class="latest-title">Coming soon</span>
+                  <p class="review">Recipe coming soon.</p>
+                </div>
               </div>
             </section>
           </div>
