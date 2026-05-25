@@ -477,26 +477,96 @@
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-
-    .music-box {
-      position: fixed;
-      right: 14px;
-      bottom: 14px;
-      z-index: 10;
-      width: 230px;
-      height: 76px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.3);
-      box-shadow: 0 12px 34px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.35);
-      opacity: .78;
-      background: rgba(0,0,0,.4);
+    .profile-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
     }
 
-    .music-box iframe {
+    .profile-pic {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid rgba(255,255,255,.58);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.5), transparent 28%),
+        linear-gradient(135deg, rgba(0,210,255,.25), rgba(255,255,255,.06));
+      box-shadow:
+        0 0 0 4px rgba(41,160,255,.18),
+        0 0 22px rgba(41,220,255,.32),
+        inset 0 0 14px rgba(255,255,255,.28);
+    }
+
+    .profile-pic img {
       width: 100%;
       height: 100%;
-      border: 0;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.04) brightness(.95);
+    }
+
+    .profile-pic::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 28% 18%, rgba(255,255,255,.25), transparent 22%),
+        linear-gradient(180deg, transparent 52%, rgba(0, 10, 28, .35));
+      pointer-events: none;
+    }
+
+    .flash-title {
+      display: inline-block;
+      position: relative;
+      padding: 0 .15em;
+      transform: skewX(-9deg);
+      animation: flashBounce 3.8s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 8px rgba(0,220,255,.35));
+    }
+
+    .flash-title::before {
+      content: "";
+      position: absolute;
+      inset: -8px -14px;
+      border-radius: 18px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.14), rgba(255,255,255,.04)),
+        radial-gradient(circle at 20% 50%, rgba(41,220,255,.18), transparent 40%);
+      border: 1px solid rgba(255,255,255,.14);
+      z-index: -1;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+    }
+
+    @keyframes flashBounce {
+      from { transform: skewX(-9deg) translateY(0) scale(1); }
+      to { transform: skewX(-9deg) translateY(-4px) scale(1.02); }
+    }
+
+    .music-toggle {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 20;
+      border: 1px solid rgba(255,255,255,.46);
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: rgba(237,250,255,.9);
+      font: 700 11px Verdana, Tahoma, Arial, sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.08)),
+        radial-gradient(circle at 20% 0%, rgba(0,230,255,.28), transparent 45%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 12px 30px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .music-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 16px 36px rgba(0,0,0,.42), 0 0 22px rgba(0,220,255,.18);
     }
 
     @media (max-width: 720px) {
@@ -530,7 +600,7 @@
       <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gilbert%20Stuart%20Williamstown%20Portrait%20of%20George%20Washington.jpg" alt="">
     </div>
     <div class="bg-bubble b4">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/White%20House%20north%20and%20south%20sides.jpg" alt="">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sutton%20Hoo%20helmet%202018%20version.jpg" alt="">
     </div>
     <div class="bg-bubble b5">
       <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Statue%20of%20Liberty%207.jpg" alt="">
@@ -552,7 +622,15 @@
           <div>
             <header class="hero">
               <span class="eyebrow">@realTateBrown</span>
-              <h1>tate <span>brown</span></h1>
+              <div class="profile-wrap">
+                <div class="profile-pic">
+                  <img src="images/tate-profile.jpg" alt="Tate Brown profile photo">
+                </div>
+              </div>
+
+              <div class="flash-title">
+                <h1>tate <span>brown</span></h1>
+              </div>
             </header>
 
             <nav class="link-stack" aria-label="Links">
@@ -651,9 +729,35 @@
       </div>
     </section>
   </main>
+  <audio id="background-music" loop preload="auto">
+    <source src="audio/Sadeness.mp3" type="audio/mpeg">
+  </audio>
 
-  <div class="music-box" title="Background music">
-    <iframe src="https://www.youtube.com/embed/rCElGHuHDwY?autoplay=1&loop=1&playlist=rCElGHuHDwY" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
+  <button class="music-toggle" id="music-toggle" type="button">sound on</button>
+
+  <script>
+    const music = document.getElementById('background-music');
+    const toggle = document.getElementById('music-toggle');
+
+    async function startMusic() {
+      try {
+        await music.play();
+        toggle.textContent = 'sound off';
+      } catch (error) {
+        toggle.textContent = 'sound on';
+      }
+    }
+
+    toggle.addEventListener('click', async () => {
+      if (music.paused) {
+        await startMusic();
+      } else {
+        music.pause();
+        toggle.textContent = 'sound on';
+      }
+    });
+
+    window.addEventListener('pointerdown', startMusic, { once: true });
+  </script>
 </body>
 </html>
