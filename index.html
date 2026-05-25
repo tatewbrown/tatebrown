@@ -9,16 +9,19 @@
       --ink: #edfaff;
       --soft: rgba(237, 250, 255, 0.72);
       --edge: rgba(255,255,255,0.42);
-      --glass: rgba(255,255,255,0.12);
-      --glass-2: rgba(255,255,255,0.18);
       --dark: #041022;
       --blue: #1d6cff;
       --cyan: #2ae7ff;
-      --lime: #b8ff36;
       --pink: #ff4fd8;
+      --lime: #b8ff36;
     }
 
     * { box-sizing: border-box; }
+
+    @font-face {
+      font-family: FlashPixel;
+      src: local("Verdana");
+    }
 
     html, body {
       margin: 0;
@@ -33,6 +36,7 @@
         radial-gradient(circle at 50% 110%, rgba(0, 255, 221, .18), transparent 35%),
         linear-gradient(135deg, #02050d 0%, #061739 26%, #0b428e 50%, #1032a8 66%, #02050d 100%);
       overflow-x: hidden;
+      cursor: crosshair;
     }
 
     body::before {
@@ -87,24 +91,35 @@
       transform: rotate(-8deg);
       background:
         linear-gradient(180deg,
-          rgba(255,255,255,.9) 0 8%,
-          transparent 8% 16%,
-          rgba(255,50,72,.9) 16% 24%,
-          transparent 24% 32%,
-          rgba(255,255,255,.9) 32% 40%,
-          transparent 40% 48%,
-          rgba(255,50,72,.9) 48% 56%,
-          transparent 56% 64%,
-          rgba(255,255,255,.9) 64% 72%,
-          transparent 72% 80%,
-          rgba(255,50,72,.9) 80% 88%,
-          transparent 88% 100%);
+          rgba(255,255,255,.9) 0 8%, transparent 8% 16%,
+          rgba(255,50,72,.9) 16% 24%, transparent 24% 32%,
+          rgba(255,255,255,.9) 32% 40%, transparent 40% 48%,
+          rgba(255,50,72,.9) 48% 56%, transparent 56% 64%,
+          rgba(255,255,255,.9) 64% 72%, transparent 72% 80%,
+          rgba(255,50,72,.9) 80% 88%, transparent 88% 100%);
       animation: flagmove 10s ease-in-out infinite alternate;
     }
 
     @keyframes flagmove {
       from { transform: rotate(-8deg) translateX(-24px) scale(1.03); }
       to   { transform: rotate(-6deg) translateX(24px) scale(1.08); }
+    }
+
+    .flash-rays {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: .22;
+      background:
+        radial-gradient(circle at 50% 50%, transparent 0 9%, rgba(255,255,255,.08) 10%, transparent 13%),
+        conic-gradient(from 0deg at 50% 50%, transparent 0 14deg, rgba(255,255,255,.08) 15deg 17deg, transparent 18deg 34deg);
+      animation: pulseRays 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseRays {
+      from { transform: scale(1) rotate(0deg); opacity: .16; }
+      to { transform: scale(1.08) rotate(8deg); opacity: .27; }
     }
 
     .background-bubbles {
@@ -166,27 +181,10 @@
       100% { transform: translate3d(var(--x), var(--y), 0) rotate(var(--r)); }
     }
 
-    .flash-rays {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      opacity: .23;
-      background:
-        radial-gradient(circle at 50% 50%, transparent 0 9%, rgba(255,255,255,.08) 10%, transparent 13%),
-        conic-gradient(from 0deg at 50% 50%, transparent 0 14deg, rgba(255,255,255,.08) 15deg 17deg, transparent 18deg 34deg);
-      animation: pulseRays 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseRays {
-      from { transform: scale(1) rotate(0deg); opacity: .16; }
-      to { transform: scale(1.08) rotate(8deg); opacity: .27; }
-    }
-
     .page {
       position: relative;
       z-index: 3;
-      width: min(840px, 92vw);
+      width: min(880px, 92vw);
       min-height: 100vh;
       margin: 0 auto;
       padding: 32px 0 42px;
@@ -247,7 +245,8 @@
     }
 
     .brand-small {
-      font-size: 11px;
+      font-family: FlashPixel, Verdana, Tahoma, Arial, sans-serif;
+      font-size: 10px;
       letter-spacing: .24em;
       text-transform: uppercase;
       color: rgba(234,252,255,.72);
@@ -287,16 +286,92 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      margin-bottom: 22px;
+      margin-bottom: 26px;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 14px;
-      font-size: 11px;
-      letter-spacing: .34em;
+    .profile-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .profile-pic {
+      width: 116px;
+      height: 116px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid rgba(255,255,255,.58);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.5), transparent 28%),
+        linear-gradient(135deg, rgba(0,210,255,.25), rgba(255,255,255,.06));
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,.16),
+        0 0 0 6px rgba(41,160,255,.18),
+        0 0 24px rgba(41,220,255,.36),
+        inset 0 0 14px rgba(255,255,255,.28);
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.04) brightness(.95);
+    }
+
+    .profile-pic::before {
+      content: "PROFILE.jpg";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 4px 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(0,0,0,.48));
+      color: rgba(237,250,255,.88);
+      font-family: FlashPixel, Verdana, Tahoma, Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      color: rgba(233,251,255,.6);
+      text-shadow: 0 1px 2px rgba(0,0,0,.8);
+    }
+
+    .profile-pic::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 28% 18%, rgba(255,255,255,.25), transparent 22%),
+        linear-gradient(180deg, transparent 52%, rgba(0, 10, 28, .35));
+      pointer-events: none;
+    }
+
+    .flash-title {
+      display: inline-block;
+      position: relative;
+      padding: 0 .15em;
+      transform: skewX(-9deg);
+      animation: flashBounce 3.8s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 8px rgba(0,220,255,.35));
+    }
+
+    .flash-title::before {
+      content: "";
+      position: absolute;
+      inset: -8px -14px;
+      border-radius: 18px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.14), rgba(255,255,255,.04)),
+        radial-gradient(circle at 20% 50%, rgba(41,220,255,.18), transparent 40%);
+      border: 1px solid rgba(255,255,255,.14);
+      z-index: -1;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+    }
+
+    @keyframes flashBounce {
+      from { transform: skewX(-9deg) translateY(0) scale(1); }
+      to { transform: skewX(-9deg) translateY(-4px) scale(1.02); }
     }
 
     h1 {
@@ -323,11 +398,6 @@
         0 0 30px rgba(255,79,216,.26);
     }
 
-    @keyframes titleShimmer {
-      from { background-position: 0% 50%; filter: hue-rotate(0deg) saturate(1.05); }
-      to { background-position: 280% 50%; filter: hue-rotate(20deg) saturate(1.25); }
-    }
-
     h1 span {
       display: block;
       color: transparent;
@@ -342,6 +412,11 @@
         0 7px 0 rgba(19,68,198,.3),
         0 10px 18px rgba(0,0,0,.35),
         0 0 30px rgba(255,79,216,.34);
+    }
+
+    @keyframes titleShimmer {
+      from { background-position: 0% 50%; filter: hue-rotate(0deg) saturate(1.05); }
+      to { background-position: 280% 50%; filter: hue-rotate(20deg) saturate(1.25); }
     }
 
     .link-stack {
@@ -364,13 +439,19 @@
       border-radius: 16px;
       text-decoration: none;
       color: var(--ink);
-      border: 1px solid rgba(255,255,255,.36);
+      border: 1px solid rgba(255,255,255,.42);
+      border-top-color: rgba(255,255,255,.72);
+      border-left-color: rgba(255,255,255,.58);
+      border-bottom-color: rgba(0,30,90,.68);
+      border-right-color: rgba(0,30,90,.55);
       background:
-        linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.07) 48%, rgba(0,0,0,.14)),
-        radial-gradient(circle at 0% 50%, rgba(50,184,255,.18), transparent 36%);
+        linear-gradient(180deg, rgba(255,255,255,.34) 0%, rgba(255,255,255,.16) 12%, rgba(255,255,255,.07) 48%, rgba(0,0,0,.2) 100%),
+        radial-gradient(circle at 0% 50%, rgba(50,184,255,.22), transparent 36%);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.42),
-        inset 0 -12px 30px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.72),
+        inset 1px 0 0 rgba(255,255,255,.22),
+        inset 0 -14px 30px rgba(0,0,0,.18),
+        inset 0 -1px 0 rgba(0,0,0,.58),
         0 14px 34px rgba(0,0,0,.26);
       overflow: hidden;
       transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
@@ -380,8 +461,10 @@
       transform: translateX(4px) scale(1.01);
       border-color: rgba(255,255,255,.68);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.5),
-        inset 0 -12px 30px rgba(0,0,0,.1),
+        inset 0 1px 0 rgba(255,255,255,.76),
+        inset 1px 0 0 rgba(255,255,255,.28),
+        inset 0 -14px 30px rgba(0,0,0,.14),
+        inset 0 -1px 0 rgba(0,0,0,.55),
         0 18px 42px rgba(0,0,0,.32),
         0 0 24px rgba(20,200,255,.14);
     }
@@ -431,7 +514,9 @@
     .desc {
       display: block;
       margin-top: 4px;
-      font-size: 11px;
+      font-family: FlashPixel, Verdana, Tahoma, Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: .04em;
       line-height: 1.3;
       color: rgba(232,252,255,.58);
     }
@@ -450,26 +535,37 @@
     .photo-section {
       position: relative;
       z-index: 4;
-      margin: 22px auto 0;
+      margin: 24px auto 0;
       width: min(680px, 100%);
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.32);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.36);
+      border-top-color: rgba(255,255,255,.72);
+      border-left-color: rgba(255,255,255,.58);
+      border-bottom-color: rgba(0,20,70,.72);
+      border-right-color: rgba(0,20,70,.62);
       background:
         linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.05)),
         radial-gradient(circle at 0% 0%, rgba(0,230,255,.13), transparent 35%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 15px 38px rgba(0,0,0,.23);
-      padding: 14px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -14px 24px rgba(0,0,0,.16), 0 15px 38px rgba(0,0,0,.23);
+      padding: 0 14px 14px;
       overflow: hidden;
     }
 
     .section-title {
-      margin: 0 0 12px;
+      margin: 0 -14px 12px;
+      padding: 8px 12px;
       color: rgba(237,250,255,.82);
-      font-size: 12px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.26), rgba(255,255,255,.06)),
+        linear-gradient(90deg, rgba(0,170,255,.28), rgba(255,79,216,.14));
+      border-bottom: 1px solid rgba(255,255,255,.25);
+      font-family: FlashPixel, Verdana, Tahoma, Arial, sans-serif;
+      font-size: 11px;
       letter-spacing: .28em;
       text-transform: uppercase;
       font-weight: normal;
       text-align: left;
+      cursor: move;
     }
 
     .africa-grid {
@@ -481,12 +577,14 @@
     .africa-slot {
       position: relative;
       min-height: 92px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.34);
+      border-top-color: rgba(255,255,255,.66);
+      border-left-color: rgba(255,255,255,.5);
       background:
         radial-gradient(circle at 35% 20%, rgba(255,255,255,.28), transparent 28%),
         linear-gradient(135deg, rgba(0,200,255,.16), rgba(255,255,255,.04));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.42), inset 0 -10px 18px rgba(0,0,0,.14);
       overflow: hidden;
     }
 
@@ -503,75 +601,10 @@
       inset: auto 0 9px;
       text-align: center;
       color: rgba(237,250,255,.56);
+      font-family: FlashPixel, Verdana, Tahoma, Arial, sans-serif;
       font-size: 10px;
       letter-spacing: .18em;
       text-transform: uppercase;
-    }
-    .profile-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 18px;
-    }
-
-    .profile-pic {
-      width: 108px;
-      height: 108px;
-      border-radius: 50%;
-      overflow: hidden;
-      position: relative;
-      border: 2px solid rgba(255,255,255,.58);
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,.5), transparent 28%),
-        linear-gradient(135deg, rgba(0,210,255,.25), rgba(255,255,255,.06));
-      box-shadow:
-        0 0 0 4px rgba(41,160,255,.18),
-        0 0 22px rgba(41,220,255,.32),
-        inset 0 0 14px rgba(255,255,255,.28);
-    }
-
-    .profile-pic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: saturate(1.05) contrast(1.04) brightness(.95);
-    }
-
-    .profile-pic::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 28% 18%, rgba(255,255,255,.25), transparent 22%),
-        linear-gradient(180deg, transparent 52%, rgba(0, 10, 28, .35));
-      pointer-events: none;
-    }
-
-    .flash-title {
-      display: inline-block;
-      position: relative;
-      padding: 0 .15em;
-      transform: skewX(-9deg);
-      animation: flashBounce 3.8s ease-in-out infinite alternate;
-      filter: drop-shadow(0 0 8px rgba(0,220,255,.35));
-    }
-
-    .flash-title::before {
-      content: "";
-      position: absolute;
-      inset: -8px -14px;
-      border-radius: 18px;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.14), rgba(255,255,255,.04)),
-        radial-gradient(circle at 20% 50%, rgba(41,220,255,.18), transparent 40%);
-      border: 1px solid rgba(255,255,255,.14);
-      z-index: -1;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
-    }
-
-    @keyframes flashBounce {
-      from { transform: skewX(-9deg) translateY(0) scale(1); }
-      to { transform: skewX(-9deg) translateY(-4px) scale(1.02); }
     }
 
     .music-toggle {
@@ -583,10 +616,13 @@
       border-radius: 999px;
       padding: 10px 14px;
       color: rgba(237,250,255,.9);
-      font: 700 11px Verdana, Tahoma, Arial, sans-serif;
+      font: 700 11px FlashPixel, Verdana, Tahoma, Arial, sans-serif;
       letter-spacing: .18em;
       text-transform: uppercase;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       background:
         linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.08)),
         radial-gradient(circle at 20% 0%, rgba(0,230,255,.28), transparent 45%);
@@ -597,6 +633,49 @@
     .music-toggle:hover {
       transform: translateY(-2px);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 16px 36px rgba(0,0,0,.42), 0 0 22px rgba(0,220,255,.18);
+    }
+
+    .eq {
+      display: inline-flex;
+      align-items: end;
+      gap: 2px;
+      height: 13px;
+    }
+
+    .eq i {
+      display: block;
+      width: 3px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(184,255,54,.9);
+      box-shadow: 0 0 7px rgba(184,255,54,.45);
+      animation: equalize .65s ease-in-out infinite alternate;
+    }
+
+    .eq i:nth-child(2) { animation-delay: .12s; }
+    .eq i:nth-child(3) { animation-delay: .24s; }
+    .eq i:nth-child(4) { animation-delay: .36s; }
+
+    @keyframes equalize {
+      from { height: 4px; }
+      to { height: 13px; }
+    }
+
+    .cursor-sparkle {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      pointer-events: none;
+      z-index: 999;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.95), rgba(42,231,255,.75), transparent 70%);
+      box-shadow: 0 0 12px rgba(42,231,255,.7), 0 0 20px rgba(255,79,216,.32);
+      animation: sparkleFade .65s ease-out forwards;
+    }
+
+    @keyframes sparkleFade {
+      from { transform: scale(1); opacity: .85; }
+      to { transform: scale(0); opacity: 0; }
     }
 
     @media (max-width: 720px) {
@@ -610,7 +689,7 @@
       .link { grid-template-columns: 44px 1fr 16px; }
       .icon { width: 44px; }
       .africa-grid { grid-template-columns: repeat(2, 1fr); }
-      .music-box { width: 180px; height: 64px; }
+      .music-toggle { right: 10px; bottom: 10px; }
     }
   </style>
 </head>
@@ -618,6 +697,10 @@
   <div class="flag-glow"></div>
   <div class="noise"></div>
   <div class="flash-rays"></div>
+
+  <audio id="background-music" loop preload="auto">
+    <source src="audio/Sadeness.mp3" type="audio/mpeg">
+  </audio>
 
   <div class="background-bubbles" aria-hidden="true">
     <div class="bg-bubble b1">
@@ -630,7 +713,7 @@
       <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gilbert%20Stuart%20Williamstown%20Portrait%20of%20George%20Washington.jpg" alt="">
     </div>
     <div class="bg-bubble b4">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Oliver%20Cromwell%20by%20Samuel%20Cooper.jpg" alt="">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sutton%20Hoo%20helmet%202018%20version.jpg" alt="">
     </div>
     <div class="bg-bubble b5">
       <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Statue%20of%20Liberty%207.jpg" alt="">
@@ -640,7 +723,7 @@
     </div>
   </div>
 
-  <main class="page">
+  <main class="page" id="top">
     <section class="site">
       <div class="window">
         <div class="topbar">
@@ -662,7 +745,7 @@
               </div>
             </header>
 
-            <nav class="link-stack" aria-label="Links">
+            <nav class="link-stack" id="links" aria-label="Links">
               <a class="link" href="https://realtatebrown.substack.com/p/the-subtle-message-of-president-trumps" target="_blank" rel="noopener noreferrer">
                 <span class="icon" aria-hidden="true">
                   <svg viewBox="0 0 32 32" fill="none">
@@ -744,13 +827,13 @@
               </a>
             </nav>
 
-            <section class="photo-section" aria-label="Africa photos section">
+            <section class="photo-section" id="africa" aria-label="Africa photos section">
               <h2 class="section-title">Africa photos</h2>
               <div class="africa-grid">
-                <div class="africa-slot"><!-- Replace this slot with: <img src="images/africa-1.jpg" alt="Africa photo 1"> --></div>
-                <div class="africa-slot"><!-- Replace this slot with: <img src="images/africa-2.jpg" alt="Africa photo 2"> --></div>
-                <div class="africa-slot"><!-- Replace this slot with: <img src="images/africa-3.jpg" alt="Africa photo 3"> --></div>
-                <div class="africa-slot"><!-- Replace this slot with: <img src="images/africa-4.jpg" alt="Africa photo 4"> --></div>
+                <div class="africa-slot"><!-- Replace with <img src="images/africa-1.jpg" alt="Africa photo 1"> --></div>
+                <div class="africa-slot"><!-- Replace with <img src="images/africa-2.jpg" alt="Africa photo 2"> --></div>
+                <div class="africa-slot"><!-- Replace with <img src="images/africa-3.jpg" alt="Africa photo 3"> --></div>
+                <div class="africa-slot"><!-- Replace with <img src="images/africa-4.jpg" alt="Africa photo 4"> --></div>
               </div>
             </section>
           </div>
@@ -758,22 +841,20 @@
       </div>
     </section>
   </main>
-  <audio id="background-music" loop preload="auto">
-    <source src="audio/Sadeness.mp3" type="audio/mpeg">
-  </audio>
 
-  <button class="music-toggle" id="music-toggle" type="button">sound on</button>
+  <button class="music-toggle" id="music-toggle" type="button"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>sound on</span></button>
 
   <script>
     const music = document.getElementById('background-music');
     const toggle = document.getElementById('music-toggle');
+    const toggleText = toggle.querySelector('span:last-child');
 
     async function startMusic() {
       try {
         await music.play();
-        toggle.textContent = 'sound off';
+        toggleText.textContent = 'sound off';
       } catch (error) {
-        toggle.textContent = 'sound on';
+        toggleText.textContent = 'sound on';
       }
     }
 
@@ -782,11 +863,24 @@
         await startMusic();
       } else {
         music.pause();
-        toggle.textContent = 'sound on';
+        toggleText.textContent = 'sound on';
       }
     });
 
     window.addEventListener('pointerdown', startMusic, { once: true });
+
+    let lastSparkle = 0;
+    window.addEventListener('pointermove', (event) => {
+      const now = Date.now();
+      if (now - lastSparkle < 45) return;
+      lastSparkle = now;
+      const sparkle = document.createElement('span');
+      sparkle.className = 'cursor-sparkle';
+      sparkle.style.left = `${event.clientX + 6}px`;
+      sparkle.style.top = `${event.clientY + 6}px`;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 700);
+    });
   </script>
 </body>
 </html>
